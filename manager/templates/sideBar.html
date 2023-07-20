@@ -1,0 +1,16 @@
+<section class="sideBar">
+  <button class="material-symbols-outlined" onclick="toggleSideBar()">linear_scale</button>
+  <header>
+    <img src="https://res.cloudinary.com/dvnemzw0z/image/upload/v1689698849/logo_ftfbmr.png" id="logo">
+  </header>
+  <nav>
+    <a href="{% url 'dashboard_page' %}"> <i class="material-symbols-outlined">dashboard</i> <span>Dashboard</span> </a>
+    <a href="{% url 'programs_page' %}"> <i class="material-symbols-outlined">radio</i> <span>Programs</span> </a>
+    <a href="{% url 'podcasts_page' %}"> <i class="material-symbols-outlined">podcasts</i> <span>Podcasts</span></a>
+    <a href="{% url 'blogs_page' %}"> <i class="material-symbols-outlined">trending_up</i> <span>Blogs</span></a>
+    <a href="{% url 'competitions_page' %}"> <i class="material-symbols-outlined">trophy</i> <span>Competitions</span> </a>
+  </nav>
+  <footer>
+    <a class="material-symbols-outlined">power_settings_new</a>
+  </footer>
+</section>

@@ -1,0 +1,364 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'listener/home.css' %}">
+<link rel="stylesheet" href="{% static 'component.css' %}">
+<link rel="stylesheet" href="{% static 'stackgrid.css' %}" />
+{% endblock css %}
+
+
+
+{% block page %}
+<section class="top_box" style="background: var(--var-theme); color: white; font-size: 1.5rem;">
+  <i class="fa-brands fa-twitter"></i>
+  <i class="fa-brands fa-youtube"></i>
+  <i class="fa-brands fa-instagram"></i>
+</section>
+
+<nav class="main_nav">
+  <section>
+    <img src="https://res.cloudinary.com/dvnemzw0z/image/upload/v1689698849/logo_ftfbmr.png" alt="" id="logo">
+    <span class="program_name">Saturday Jams</span>
+    <button class="material-symbols-outlined" onclick="toggleMiniNav()">menu</button>
+  </section>
+  <div>
+    <a href="">Home</a>
+    <a href="">Galleries</a>
+    <a href="">FAQ</a>
+    <a href="">About Us</a>
+    <a href="">Contact Us</a>
+  </div>
+</nav>
+
+<section class="head_box">
+  <section class="head_box_cover"
+    style="background-image: url({{program.thumb.url}}); background-position: center; background-size: cover;"></section>
+  <section class="head_box_con">
+    <section class="left">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero rerum placeat autem perspiciatis,</p>
+      <button><i class="material-symbols-outlined">play_arrow</i> Start Listening</button>
+      <nav>
+        <i class="fa-brands fa-google-play"></i>
+        <i class="fa-brands fa-apple"></i>
+      </nav>
+    </section>
+
+    <section class="mid">
+      <div style="background-image: url({{program.thumb.url}});">
+        <audio src="/media/audio_files/george_maple_hero_official_video_aac_24333.m4a" style="display: none;" muted></audio>
+        <section class="cover" style="flex-direction: column;">
+          <button class="material-symbols-outlined play_btn" id="play" onclick="togglePlay()">play_arrow</button>
+          <span
+            style="background: var(--var-theme); color: white; padding: 8px 10px; margin-top: 5px; border-radius: 3px; cursor: pointer;"
+            onclick="togglePlay()">Listen Live</span>
+        </section>
+      </div>
+      <section class="play_box">
+        <button class="material-symbols-outlined" onclick="togglePlay()">headphones</button>
+        <span class="bar_box">
+          <small></small>
+          <small></small>
+          <small></small>
+          <small></small>
+          <small></small>
+        </span>
+
+        <p>
+          <span><i class="material-symbols-outlined">mic</i> {{program.name}}</span>
+          <span><i class="material-symbols-outlined" id="clock">schedule</i> On air</span>
+          <span><i class="material-symbols-outlined">music_note</i> Now playing </span>
+          <span><i class="material-symbols-outlined">timer</i> {{program.start_date|date:'h:i'}} - {{program.end_date|date:'h:i'}} </span>
+        </p>
+        <!-- <button></button> -->
+      </section>
+    </section>
+
+    <section class="right info_holder">
+      <div class="info">
+        <p>
+          <span>3K+</span>
+          <small>Active users</small>
+        </p>
+        <p>
+          <span>200+</span>
+          <small>Programs</small>
+        </p>
+        <p>
+          <span>30+</span>
+          <small>Dj's</small>
+        </p>
+      </div>
+      <nav>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-youtube"></i>
+        <i class="fa-brands fa-instagram"></i>
+      </nav>
+    </section>
+  </section>
+</section>
+
+<section class="low_box">
+  <section class="con">
+    <section class="con_section">
+      <h3>Line Up & Dj's</h3>
+      <section class="program_box">
+        {% for item in programs %}
+        <div class="program">
+          <div class="img_box" style="background-image: url({{item.thumb.url}});"></div>
+          <p>
+            <strong>{{item.name}}</strong>
+            <small><i class="material-symbols-outlined">timer</i> {{item.start_date|date:'h:i'}} - {{item.end_date|date:'h:i'}} </small>
+            <small><i class="material-symbols-outlined">play_arrow</i> Latest Episode</small>
+          </p>
+          <div class="program_tag">Live Now</div>
+        </div>
+        {% endfor %}
+      </section>
+    </section>
+
+    <script>
+      let Lineup_tags = ['Live Now', 'Up Next', 'Later', 'Still to come']
+      const program_tags = document.querySelectorAll('.program_tag')
+
+      program_tags.forEach((el, i) => {
+        el.innerHTML = Lineup_tags[i]
+      })
+    </script>
+
+    <section class="con_section">
+      <h3>Podcasts</h3>
+      <section class="program_box">
+        {% for item in podcasts %}
+        <div class="program">
+          <div class="img_box" style="background-image: url({{item.thumb.url}});"></div>
+          <p>
+            <strong>{{item.name}}</strong>
+            <small><i class="material-symbols-outlined">timer</i> {{item.start_date|date:'h:i'}} - {{item.end_date|date:'h:i'}} </small>
+            <small><i class="material-symbols-outlined">play_arrow</i> Latest Episode</small>
+          </p>
+          <div class="program_tag material-symbols-outlined">podcasts</div>
+        </div>
+        {% endfor %}
+      </section>
+    </section>
+
+    <section class="con_section">
+      <h3>Competitions</h3>
+      <section class="program_box">
+        {% for item in competitions %}
+        <div class="program">
+          <div class="img_box" style="background-image: url({{item.thumb.url}});"></div>
+          <p>
+            <strong>{{item.name}}</strong>
+            <small><i class="material-symbols-outlined">timer</i> {{item.start_date|date:'h:i'}} - {{item.end_date|date:'h:i'}} </small>
+            <small><i class="material-symbols-outlined">play_arrow</i> Latest Episode</small>
+          </p>
+          <div class="program_tag material-symbols-outlined">trophy</div>
+        </div>
+        {% endfor %}
+      </section>
+    </section>
+  </section>
+</section>
+<section class="social_box">
+  <section class="con">
+    <h3>Live Social Feed</h3>
+    <div class="posts stack-container" max-width="640" min-width="280" gutter="10">
+      <div class="stack-card">
+        <div class="program_tag">Instagram</div>
+        <img src="images/dot.jpg">
+        <div class="header">
+          <div class="title">Trending</div>
+        </div>
+        <div class="content">
+          <small>
+            This #MandelaDay METRO FM will be renovating computer labs at Coronation Secondary School (Emalahleni)
+            and Violet Jiyane Junior Secondary (Carolina).
+
+          </small>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="program_tag">Instagram</div>
+        <img src="images/Illmatic Album Artwork.jpg">
+        <div class="header">
+          <div class="title">Trending</div>
+        </div>
+        <div class="content">
+          <small>
+            This #MandelaDay METRO FM will be renovating computer labs at Coronation Secondary School (Emalahleni)
+            and Violet Jiyane Junior Secondary (Carolina).
+          </small>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="program_tag">Instagram</div>
+        <img src="images/drake.jpg">
+        <div class="header">
+          <div class="title">Trending</div>
+        </div>
+        <div class="content">
+          <small>Todays #BreakAwayNote with givenbaloyi_</small>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="program_tag">Instagram</div>
+        <img src="images/kanye.jpg">
+        <div class="header">
+          <div class="title">Trending</div>
+        </div>
+        <div class="content">
+          <small>Todays #BreakAwayNote with givenbaloyi_</small>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="program_tag">Instagram</div>
+        <img src="images/rema.jpg">
+        <div class="header">
+          <div class="title">Trending</div>
+        </div>
+        <div class="content">
+          <small>
+            This #MandelaDay METRO FM will be renovating computer labs at Coronation Secondary School (Emalahleni)
+            and Violet Jiyane Junior Secondary (Carolina).
+          </small>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="program_tag">Instagram</div>
+        <img src="images/drake.jpg">
+        <div class="header">
+          <div class="title">Trending</div>
+        </div>
+        <div class="content">
+          <small>Todays #BreakAwayNote with givenbaloyi_</small>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="program_tag">Instagram</div>
+        <img src="images/Illmatic Album Artwork.jpg">
+        <div class="header">
+          <div class="title">Trending</div>
+        </div>
+        <div class="content">
+          <small>
+            This #MandelaDay METRO FM will be renovating computer labs at Coronation Secondary School (Emalahleni)
+            and Violet Jiyane Junior Secondary (Carolina).
+
+          </small>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="program_tag">Instagram</div>
+        <img src="images/dot.jpg">
+        <div class="header">
+          <div class="title">Trending</div>
+        </div>
+        <div class="content">
+          <small>Todays #BreakAwayNote with givenbaloyi_</small>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<script>
+  document.querySelectorAll('.stack-card').forEach((el, i) => {
+    anime({
+      targets: el,
+      delay: 50 * i,
+      translateY: [40, 0],
+      opacity: [0, 1],
+      easing: 'easeInOutExpo',
+      // scale : [0,1]
+    })
+  })
+</script>
+
+<footer>
+  <section>
+    <h4>DISCOVER</h4>
+    <div>
+      <a href="">News</a>
+      <a href="">Sport</a>
+      <a href="">Education</a>
+      <a href="">TV Liscences</a>
+    </div>
+  </section>
+  <section>
+    <h4>TV</h4>
+    <div>
+      <a href="">S1</a>
+      <a href="">S2</a>
+      <a href="">S3</a>
+    </div>
+  </section>
+  <section>
+    <h4>RADIO</h4>
+    <div>
+      <a href="">Channel Africa</a>
+      <a href="">5 FM</a>
+      <a href="">Lotus FM</a>
+    </div>
+  </section>
+</footer>
+<section class="last_box">
+  <div class="info">
+    <p>
+      <span>3K+</span>
+      <small>Active users</small>
+    </p>
+    <p>
+      <span>200+</span>
+      <small>Programs</small>
+    </p>
+    <p>
+      <span>30+</span>
+      <small>Dj's</small>
+    </p>
+  </div>
+</section>
+{% endblock page %}
+
+
+{% block js %}  
+<script>
+  const mini_nav = document.querySelector('.main_nav div')
+  console.log(mini_nav)
+
+  const toggleMiniNav = () => {
+    mini_nav.classList.toggle('change')
+  }
+</script>
+<script>
+  const audio_file = document.querySelector('audio')
+  const audio_progress = document.querySelector('.player_bar .progress')
+
+  const play_btn = document.querySelector('.play_btn')
+  
+  const togglePlay = () => {
+    if (play_btn.id === 'play') {
+      audio_file.play()
+      audio_file.muted = false
+      play_btn.id = 'pause'
+      play_btn.innerHTML = 'stop'
+      document.querySelectorAll('.head_box .mid span small').forEach(bar=>{
+        bar.style.background = '#ea5e21'
+      })
+    } else {
+      audio_file.pause()
+      play_btn.id = 'play'
+      play_btn.innerHTML = 'play_arrow'
+      document.querySelectorAll('.head_box .mid span small').forEach(bar=>{
+        bar.style.background = 'white'
+      })
+    }
+  }  
+</script>
+
+<script src="{% static 'listener/home.js' %}"></script>
+<script src="{% static 'stackgrid.js' %}"></script>
+{% endblock js %}
+  

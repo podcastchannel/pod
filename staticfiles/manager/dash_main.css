@@ -1,0 +1,383 @@
+.page {
+  flex-direction: row !important;
+  justify-content: flex-end !important;
+}
+
+.prompt_box {
+  width: 350px;
+  padding: 10px;
+  height: 200px;
+  border-radius: 0 0 0 10px;
+  background: white;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  transition: 0.3s ease;
+  right: -370px;
+}
+
+.prompt_box.change {
+  right: 0;
+}
+
+.prompt_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem 0;
+  text-align: center;
+}
+
+.prompt_box span {
+  color: salmon;
+  font-weight: 600;
+}
+
+.prompt_box nav button {
+  padding: 5px 10px;
+}
+
+.prompt_box button:nth-child(1) {
+  background: rgb(11, 215, 113);
+}
+
+.prompt_box button:nth-child(2) {
+  background: tomato;
+}
+
+.prompt_box button {
+  border-radius: 3px;
+  cursor: pointer;
+  color: white;
+}
+
+
+
+.sideBar {
+  width: 3%;
+  padding: 5vh 1%;
+  height: 90vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-right: 1px dotted wheat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: 0.4s ease;
+}
+
+.sideBar a span {
+  display: none;
+}
+
+.sideBar.change {
+  width: 16%;
+  padding: 5vh 2%;
+}
+
+.sideBar.change a span {
+  display: flex;
+}
+
+
+.sideBar button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.sideBar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sideBar nav a {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0 0.5rem;
+}
+
+.sideBar footer a {
+  font-size: 3rem;
+  color: white;
+}
+
+.main {
+  width: 90%;
+  padding: 5vh 2.5%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem 0;
+  transition: 0.4s ease;
+}
+
+.main.change {
+  width: 76%;
+  padding: 5vh 2%;
+}
+
+.main_cover {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.418);
+  z-index: 50;
+  min-height: 100vh;
+  transition: 0.3s ease;
+}
+
+.main_cover.change {
+  left: 0;
+}
+
+.main_header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 1rem;
+  padding: 10px 0;
+  color: white;
+}
+
+.main_header i {
+  font-size: 2rem;
+}
+
+.main_header span {
+  font-size: 2rem;
+}
+
+.search_box {
+  display: flex;
+  gap: 0 1rem;
+  flex-wrap: wrap;
+}
+
+.search_box select {
+  padding: 6px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.search_box input {
+  text-align: center;
+  padding: 5px 15px;
+  font-size: 1.1rem;
+  border-radius: 3px;
+}
+
+.search_box h4 {
+  color: wheat;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.add_program_box {
+  width: 600px;
+  width: 30%;
+  padding: 5vh 5%;
+  background: white;
+  top: 0;
+  height: 90vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
+  position: fixed;
+  z-index: 100;
+  transition: 0.4s ease;
+  left: -50%;
+}
+
+.add_program_box.change {
+  left: 0;
+}
+
+.add_program_box button[type='button'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  background: tomato;
+  color: white;
+}
+
+.add_program_box form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.add_program_box form header {
+  font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+.add_program_box form section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem 0;
+}
+
+.add_program_box form section div {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+.add_program_box label div {
+  background: #dcdcdd;
+  width: 350px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center;
+  background-size: cover;
+}
+
+.add_program_box button[type='submit'] {
+  background: rgb(50, 50, 50);
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.info_form {
+  width: 100%;
+}
+
+.info_form div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem 0;
+  align-items: center;
+}
+
+.info_form input {
+  width: 70%;
+  padding: 10px 5%;
+  border: 1px dotted darkgray;
+}
+
+.info_form textarea {
+  width: 70%;
+  padding: 10px 5%;
+  height: 50px;
+  resize: none;
+  overflow-y: auto;
+  border: 1px dotted darkgray;
+}
+
+.program_box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+@media all and (max-width:1300px) {
+
+  .sideBar,
+  .sideBar.change {
+    width: 250px;
+    padding: 5vh 10px;
+    z-index: 100;
+    background: var(--var-bg);
+  }
+
+  .sideBar {
+    left: -270px;
+  }
+
+  .sideBar.change {
+    left: 0;
+  }
+
+  .sideBar.change nav a span {
+    display: flex;
+  }
+
+  .sideBar button {
+    left: 100%;
+  }
+
+  .main,
+  .main.change {
+    width: 90%;
+    padding: 5vh 5%;
+  }
+}
+
+@media all and (max-width:700px) {
+  .program_box {
+    gap: revert;
+    gap: 2rem 0;
+    justify-content: space-around;
+  }
+
+  .add_program_box {
+    padding: revert;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 5vh 0;
+    width: 300px;
+    left: -300px;
+  }
+
+  .add_program_box label div {
+    width: 90%;
+    height: 200px;
+  }
+
+  .add_program_box section {
+    width: 90%;
+  }
+
+  .add_program_box section label {
+    width: 90%;
+  }
+}
+
+@media all and (max-width:600px) {
+  .search_box {
+    gap: 1rem 0;
+    justify-content: space-around;
+  }
+}
+
+@media all and (max-width:450px) {
+  .prompt_box {
+    width: 70%;
+    padding: 5px 5%;
+    right: -80%;
+  }
+
+  .prompt_box.change {
+    right: 0;
+  }
+}

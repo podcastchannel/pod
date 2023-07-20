@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'component.css' %}">
+<link rel="stylesheet" href="{% static 'manager/dash_main.css' %}">
+{% endblock css %}
+
+
+{% block page %}
+<section class="prompt_box">
+  <div>
+    <p>Are you sure you want to delete</p>
+    <span></span>
+  </div>
+  <nav>
+    <button>Yes</button>
+    <button>No</button>
+  </nav>
+</section>
+
+{% include "sideBar.html" %}
+
+<section class="main">
+  <section class="main_cover" onclick="toggleProgramForm()"></section>
+  <section class="add_program_box">
+    <button type="button" class="material-symbols-outlined" style="cursor: pointer;"
+      onclick="toggleProgramForm()">close</button>
+    <form method="post" id="program_form" enctype="multipart/form-data">
+      {% csrf_token %}
+      <section>
+        <span id="program_type">New Blog</span>
+        <input type="number" name="id" readonly style="display: none;">
+      </section>
+
+      <hr style="width: 90%; border-top: 1px solid darkgray;">
+
+      <section class="info_form">
+        <input type="text" name="py_day" style="display: none;">
+        <div>
+          <small>Blog Name</small>
+          <input type="text" name="name" required>
+        </div>
+        <div>
+          <small>Description</small>
+          <textarea name="description"  required style="height: 300px;"></textarea>
+        </div>
+      </section>
+
+      <section>
+        <label for="add_image" class="image_label">
+          <div class="img_box">
+            <i class="material-symbols-outlined" style="font-size: 4rem;">add_a_photo</i>
+            <input style="display: none;" type="file" name="image" id="add_image" accept="image/*"
+              onchange="addImage(event.target, event.target.parentElement)">
+          </div>
+        </label>
+      </section>
+
+      <hr style="width: 90%; border-top: 1px solid darkgray;">
+
+      <section class="info_form">
+        <div>
+          <small>Share Link</small>
+          <textarea name="share_link"></textarea>
+        </div>
+        <div>
+          <small>Social Accounts (seperate with commas)</small>
+          <textarea name="social_accounts"></textarea>
+        </div>
+      </section>
+
+      <section>
+        <button type="submit">Done</button>
+      </section>
+    </form>
+  </section>
+
+  <header class="main_header">
+    <i class="material-symbols-outlined">trophy</i>
+    <span>Blogs</span>
+  </header>
+
+
+  <section>
+    <div class="program" style="font-size:4rem;align-items: center;cursor:pointer; justify-content: center;"
+      onclick="toggleProgramForm(event.target)">
+      +
+    </div>
+  </section>
+
+  <section class="search_box">
+    <input type="text" placeholder="Blog search" name="program_search"
+      oninput="searchProgram(event.target.value.toLowerCase())">
+
+    <h4></h4>
+  </section>
+
+
+
+  <section class="day_box" data-program_list="{{program_list}}">
+    <section class="day">
+      <header>Blogs</header>
+      <section class="program_box">
+      </section>
+    </section>
+    <style>
+      .main {
+        min-height: 90vh;
+      }
+
+      .day_box {
+        display: flex;
+        gap: 3rem;
+        flex-direction: column;
+      }
+
+      .day {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem 0;
+      }
+
+      .day header {
+        color: wheat;
+        font-size: 1.5rem;
+        padding: 5px 0;
+        border-bottom: 1px dotted wheat;
+      }
+    </style>
+  </section>
+</section>
+
+{% endblock page %}
+
+
+
+{% block js %}
+<script src="{% static 'manager/dashboard.js' %}"></script>
+<script>
+  const addImage = (el, el_p) => {
+    const [file] = el.files
+    var src = URL.createObjectURL(file)
+    el_p.style.backgroundImage = `url(${src})`
+  }
+</script>
+<script>
+  const main_cover = document.querySelector('.main_cover')
+  const add_program_box = document.querySelector('.add_program_box')
+</script>
+
+<script>
+  const day_box = document.querySelector('.day_box')
+
+  let program_list = JSON.parse(day_box.dataset.program_list)
+
+  const createRealDate = (date_obj) => {
+    return date_obj.toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric", })
+  }
+
+  program_list.forEach((el, i) => {
+    const pro_box = document.querySelector('.program_box')
+
+    pro_box.innerHTML += `
+      <div class="program" data-name="${el.name}">
+        <div class="img_box" style="background-image: url(${el.image_url});"></div>
+        <p>
+          <strong>${el.name}</strong>
+          <span>${el.description.substring(0, 100)}</span>
+          <small><i class="material-symbols-outlined">event</i> ${createRealDate(new Date(el.start_date))} </small>
+        </p>
+        <div class='program_tag material-symbols-outlined'>trending_up</div>
+        <p style="flex-direction: row;">
+          <i class="material-symbols-outlined" onclick="toggleProgramForm(event.target, ${el.id})" style="font-size: 1.6rem;">edit</i>
+          <i class="material-symbols-outlined" onclick="delete_program(event.target, ${el.id}, '${el.name}')" style="font-size: 1.6rem;">delete</i>
+        </p>
+      </div>
+    `
+  })
+
+
+  const program_form = document.getElementById('program_form')
+
+  const toggleProgramForm = (el, el_id) => {
+    if (el) {
+      document.getElementById('program_type').innerHTML = 'New Blog'
+    }
+
+    if (el_id) {
+      program_list.forEach(prog => {
+        if (prog.id === el_id) {
+          document.querySelector('input[name="id"]').value = prog.id
+          document.getElementById('program_type').innerHTML = 'Edit Blog'
+          document.querySelector('input[name="name"]').value = prog.name
+          document.querySelector('textarea[name="description"]').value = prog.description
+          document.querySelector('.img_box').style.backgroundImage = `url(${prog.image_url})`
+          document.querySelector('textarea[name="share_link"]').value = prog.share_link
+          document.querySelector('textarea[name="social_accounts"]').value = prog.social_accounts
+        }
+      })
+    }
+
+    if (add_program_box.classList.contains('change')) {
+      document.querySelector('.img_box').style.backgroundImage = '';
+      [...program_form.elements].forEach(el => {
+        el.value = ''
+      })
+    }
+
+    add_program_box.classList.toggle('change')
+    main_cover.classList.toggle('change')
+  }
+
+  const prompt_box = document.querySelector('.prompt_box')
+
+  const delete_program = (el, el_id, el_name) => {
+    prompt_box.children[0].children[1].innerHTML = el_name
+    prompt_box.classList.add('change')
+
+    prompt_box.onclick = (e) => {
+      if (e.target.innerHTML === 'Yes') {
+        runAxios('delete_blog', el_id)
+        runDeleteAnime(el.parentElement.parentElement)
+        prompt_box.classList.remove('change')
+      } else if (e.target.innerHTML === 'No') {
+        prompt_box.classList.remove('change')
+      }
+    }
+  }
+
+  const days = document.querySelectorAll('.day')
+
+  const filterDay = (val) => {
+    if (val === 'all') {
+      days.forEach(day => {
+        day.style.display = 'flex'
+      })
+    } else {
+      days.forEach(day => {
+        if (day.dataset.name === val) {
+          day.style.display = 'flex'
+        } else {
+          day.style.display = 'none'
+        }
+      })
+    }
+  }
+
+  const programs = document.querySelectorAll('.program')
+
+  const searchProgram = (val) => {
+    var results = 0
+    programs.forEach(program => {
+      if (program.dataset.name) {
+        if (program.dataset.name.toLowerCase().includes(val)) {
+          program.style.display = 'flex'
+          results += 1
+        } else {
+          program.style.display = 'none'
+        }
+      }
+    })
+    document.querySelector('.search_box h4').innerHTML = `${results} Results`
+  }
+</script>
+{% endblock js %}

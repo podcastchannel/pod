@@ -1,0 +1,154 @@
+.page {
+  align-items: center;
+  min-height: 100vh;
+}
+
+.main .top {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem 0;
+}
+
+.stat {
+  width: 150px;
+  height: 160px;
+  padding: 15px;
+  border-radius: 20px;
+  background: #dcdcdd;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.stat p {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 5px 0;
+}
+
+.stat p i {
+  font-size: 3rem;
+}
+
+.stat span {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 2.3rem;
+  letter-spacing: 1px;
+}
+
+#seperator {
+  width: 100%;
+  border-top: 1px solid white;
+}
+
+.chart_box .chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.chart_box header {
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 1px;
+  font-size: 1.5rem;
+}
+
+.rank_box {
+  width: 100%;
+  height: 40vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rank {
+  height: 45px;
+  width: 90%;
+  padding: 5px 5%;
+  display: flex;
+  gap: 0 2rem;
+  align-items: center;
+  border-bottom: 1px dotted darkgray;
+}
+
+.rank .img_box {
+  width: 60px;
+  height: 40px;
+  border-radius: 5px;
+  background-position: center;
+  background-size: cover;
+}
+
+.main .low {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.chart_box {
+  width: 30%;
+  height: 45vh;
+  background: white;
+  border-radius: 10px;
+}
+
+.chart{
+  width: 90%;
+  padding: 10px 5%;
+}
+
+.upcoming_box {
+  display: flex;
+  width: 65%;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.upcoming_box header {
+  font-size: 2rem;
+  color: white;
+}
+
+.upcoming_box section {
+  display: flex;
+  width: 98%;
+  padding: 1rem 1%;
+  justify-content: flex-start;
+  gap: 0 1rem;
+  overflow-x: scroll;
+}
+
+.program {
+  min-width: 270px;
+}
+
+@media all and (max-width:1000px) {
+  .main .low {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 2rem 0;
+  }
+
+  .chart_box {
+    width: 400px;
+  }
+
+  .upcoming_box {
+    width: 100%;
+  }
+}
+
+@media all and (max-width:500px) {
+  .chart_box {
+    width: 80%;
+    padding: 1rem 5%;
+  }
+}

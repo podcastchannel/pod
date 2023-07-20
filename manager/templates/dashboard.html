@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'component.css' %}">
+<link rel="stylesheet" href="{% static 'manager/dash_main.css' %}">
+<link rel="stylesheet" href="{% static 'manager/dashboard.css' %}">
+{% endblock css %}
+
+{% block page %}
+{% include 'sideBar.html' %}
+
+<section class="main">
+  <section class="top">
+    <a class="stat">
+      <p>
+        <i class="material-symbols-outlined">radio</i>
+        <small>programs</small>
+      </p>
+      <span>{{program_count}}</span>
+    </a>
+    <a class="stat">
+      <p>
+        <i class="material-symbols-outlined">trophy</i>
+        <small>competitions</small>
+      </p>
+      <span>{{competition_count}}</span>
+    </a>
+    <a class="stat">
+      <p>
+        <i class="material-symbols-outlined">podcasts</i>
+        <small>podcasts</small>
+      </p>
+      <span>{{podcast_count}}</span>
+    </a>
+    <a class="stat">
+      <p>
+        <i class="material-symbols-outlined">trending_up</i>
+        <small>blogs</small>
+      </p>
+      <span>{{blog_count}}</span>
+    </a>
+  </section>
+
+  <hr id="seperator">
+  <section class="low">
+    <section class="chart_box swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="chart">
+            <header> <i class="material-symbols-outlined">trophy</i> Competitions</header>
+            <div class="rank_box">
+              {% for competition in competitions %}
+              <div class="rank">
+                <span>{{forloop.counter}}</span>
+                <div class="img_box" style="background-image: url({{competition.thumb.url}});"></div>
+                <p>{{competition.start_date|date:'jS F, Y'}}</p>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="chart">
+            <header> <i class="material-symbols-outlined">podcasts</i> Podcasts</header>
+            <div class="rank_box">
+              {% for podcast in podcasts %}
+              <div class="rank">
+                <span>1.</span>
+                <div class="img_box" style="background-image: url({{podcast.thumb.url}});"></div>
+                <p>{{podcast.start_date|date:'jS F, Y'}}</p>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="chart">
+            <header> <i class="material-symbols-outlined">trending_up</i> Blogs</header>
+            <div class="rank_box">
+              {% for blog in blogs %}
+              <div class="rank">
+                <span>1.</span>
+                <div class="img_box" style="background-image: url({{blog.thumb.url}});"></div>
+                <p>{{blog.start_date|date:'jS F, Y'}}</p>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      var chart_swiper = new Swiper('.chart_box',{
+        loop : true,
+        speed : 1000,
+        autoplay : {
+          delay : 4000
+        }
+      })
+    </script>
+
+    <section class="upcoming_box">
+      <header>Upcoming Programs</header>
+      <section>
+        {% for program in programs %}
+        <div class="program">
+          <div class="img_box" style="background-image: url({{program.thumb.url}});"></div>
+          <p>
+            <strong>{{program.name}}</strong>
+            <small><i class="material-symbols-outlined">timer</i> {{program.start_date|date:'G:i'}} -
+              {{program.end_date|date:'G:i'}} </small>
+            <small><i class="material-symbols-outlined">play_arrow</i> Latest Episode</small>
+          </p>
+          <div class="program_tag">Live Now</div>
+        </div>
+        {% endfor %}
+      </section>
+    </section>
+
+    <script>
+      let Lineup_tags = ['Live Now', 'Up Next', 'Later', 'Still to come']
+      const program_tags = document.querySelectorAll('.program_tag')
+
+      program_tags.forEach((el, i) => {
+        el.innerHTML = Lineup_tags[i]
+      })
+    </script>
+
+  </section>
+</section>
+{% endblock page %}
+
+{% block js %}
+<script src="{% static 'manager/dashboard.js' %}"></script>
+{% endblock js %}
