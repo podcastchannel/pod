@@ -66,7 +66,7 @@
             <div class="rank_box">
               {% for podcast in podcasts %}
               <div class="rank">
-                <span>1.</span>
+                <span>{{forloop.counter}}</span>
                 <div class="img_box" style="background-image: url({{podcast.thumb.url}});"></div>
                 <p>{{podcast.start_date|date:'jS F, Y'}}</p>
               </div>
@@ -80,7 +80,7 @@
             <div class="rank_box">
               {% for blog in blogs %}
               <div class="rank">
-                <span>1.</span>
+                <span>{{forloop.counter}}</span>
                 <div class="img_box" style="background-image: url({{blog.thumb.url}});"></div>
                 <p>{{blog.start_date|date:'jS F, Y'}}</p>
               </div>

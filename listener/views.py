@@ -8,6 +8,7 @@ def home(request):
         'program' : program,
         'programs' : Program.objects.order_by('start_date')[:4],
         'podcasts' : Podcast.objects.order_by('start_date')[:4],
-        'competitions' : Competition.objects.order_by('start_date')[:4]
+        'competitions' : Competition.objects.order_by('start_date')[:4],
+        'blogs' : Blog.objects.order_by('start_date')[:12]
     }
     return render(request, 'home.html', context)

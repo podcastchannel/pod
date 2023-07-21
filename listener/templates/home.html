@@ -34,7 +34,8 @@
 
 <section class="head_box">
   <section class="head_box_cover"
-    style="background-image: url({{program.thumb.url}}); background-position: center; background-size: cover;"></section>
+    style="background-image: url({{program.thumb.url}}); background-position: center; background-size: cover;">
+  </section>
   <section class="head_box_con">
     <section class="left">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero rerum placeat autem perspiciatis,</p>
@@ -47,7 +48,8 @@
 
     <section class="mid">
       <div style="background-image: url({{program.thumb.url}});">
-        <audio src="/media/audio_files/george_maple_hero_official_video_aac_24333.m4a" style="display: none;" muted></audio>
+        <audio src="/media/audio_files/george_maple_hero_official_video_aac_24333.m4a" style="display: none;"
+          muted></audio>
         <section class="cover" style="flex-direction: column;">
           <button class="material-symbols-outlined play_btn" id="play" onclick="togglePlay()">play_arrow</button>
           <span
@@ -69,7 +71,8 @@
           <span><i class="material-symbols-outlined">mic</i> {{program.name}}</span>
           <span><i class="material-symbols-outlined" id="clock">schedule</i> On air</span>
           <span><i class="material-symbols-outlined">music_note</i> Now playing </span>
-          <span><i class="material-symbols-outlined">timer</i> {{program.start_date|date:'h:i'}} - {{program.end_date|date:'h:i'}} </span>
+          <span><i class="material-symbols-outlined">timer</i> {{program.start_date|date:'h:i'}} -
+            {{program.end_date|date:'h:i'}} </span>
         </p>
         <!-- <button></button> -->
       </section>
@@ -109,7 +112,8 @@
           <div class="img_box" style="background-image: url({{item.thumb.url}});"></div>
           <p>
             <strong>{{item.name}}</strong>
-            <small><i class="material-symbols-outlined">timer</i> {{item.start_date|date:'h:i'}} - {{item.end_date|date:'h:i'}} </small>
+            <small><i class="material-symbols-outlined">timer</i> {{item.start_date|date:'h:i'}} -
+              {{item.end_date|date:'h:i'}} </small>
             <small><i class="material-symbols-outlined">play_arrow</i> Latest Episode</small>
           </p>
           <div class="program_tag">Live Now</div>
@@ -135,8 +139,9 @@
           <div class="img_box" style="background-image: url({{item.thumb.url}});"></div>
           <p>
             <strong>{{item.name}}</strong>
-            <small><i class="material-symbols-outlined">timer</i> {{item.start_date|date:'h:i'}} - {{item.end_date|date:'h:i'}} </small>
-            <small><i class="material-symbols-outlined">play_arrow</i> Latest Episode</small>
+            <span class="prog_text">{{item.description}}</span>
+            <small><i class="material-symbols-outlined">timer</i> {{item.start_date|date:'h:i'}} -
+              {{item.end_date|date:'h:i'}} </small>
           </p>
           <div class="program_tag material-symbols-outlined">podcasts</div>
         </div>
@@ -152,114 +157,44 @@
           <div class="img_box" style="background-image: url({{item.thumb.url}});"></div>
           <p>
             <strong>{{item.name}}</strong>
-            <small><i class="material-symbols-outlined">timer</i> {{item.start_date|date:'h:i'}} - {{item.end_date|date:'h:i'}} </small>
-            <small><i class="material-symbols-outlined">play_arrow</i> Latest Episode</small>
+            <span class="prog_text">{{item.description}}</span>
+            <small><i class="material-symbols-outlined">timer</i> {{item.start_date|date:'jS F,Y'}} -
+              {{item.end_date|date:'jS F,Y'}} </small>
           </p>
           <div class="program_tag material-symbols-outlined">trophy</div>
         </div>
         {% endfor %}
       </section>
     </section>
+
+    <style>
+      .prog_text{
+        height: 50px;
+        overflow: hidden;
+        font-size: 0.8rem;
+        color: rgb(77, 77, 77);
+      }
+    </style>
+
   </section>
 </section>
 <section class="social_box">
   <section class="con">
     <h3>Live Social Feed</h3>
     <div class="posts stack-container" max-width="640" min-width="280" gutter="10">
-      <div class="stack-card">
-        <div class="program_tag">Instagram</div>
-        <img src="images/dot.jpg">
-        <div class="header">
-          <div class="title">Trending</div>
-        </div>
-        <div class="content">
-          <small>
-            This #MandelaDay METRO FM will be renovating computer labs at Coronation Secondary School (Emalahleni)
-            and Violet Jiyane Junior Secondary (Carolina).
 
-          </small>
-        </div>
-      </div>
+      {% for blog in blogs %}
       <div class="stack-card">
-        <div class="program_tag">Instagram</div>
-        <img src="images/Illmatic Album Artwork.jpg">
+        <div class="program_tag">{{blog.name}}</div>
+        <img src="{{blog.thumb.url}}">
         <div class="header">
-          <div class="title">Trending</div>
+          <div class="title"><i class="material-symbols-outlined">trending_up</i></div>
         </div>
         <div class="content">
-          <small>
-            This #MandelaDay METRO FM will be renovating computer labs at Coronation Secondary School (Emalahleni)
-            and Violet Jiyane Junior Secondary (Carolina).
-          </small>
+          <small>{{blog.description}}</small>
         </div>
       </div>
-      <div class="stack-card">
-        <div class="program_tag">Instagram</div>
-        <img src="images/drake.jpg">
-        <div class="header">
-          <div class="title">Trending</div>
-        </div>
-        <div class="content">
-          <small>Todays #BreakAwayNote with givenbaloyi_</small>
-        </div>
-      </div>
-      <div class="stack-card">
-        <div class="program_tag">Instagram</div>
-        <img src="images/kanye.jpg">
-        <div class="header">
-          <div class="title">Trending</div>
-        </div>
-        <div class="content">
-          <small>Todays #BreakAwayNote with givenbaloyi_</small>
-        </div>
-      </div>
-      <div class="stack-card">
-        <div class="program_tag">Instagram</div>
-        <img src="images/rema.jpg">
-        <div class="header">
-          <div class="title">Trending</div>
-        </div>
-        <div class="content">
-          <small>
-            This #MandelaDay METRO FM will be renovating computer labs at Coronation Secondary School (Emalahleni)
-            and Violet Jiyane Junior Secondary (Carolina).
-          </small>
-        </div>
-      </div>
-      <div class="stack-card">
-        <div class="program_tag">Instagram</div>
-        <img src="images/drake.jpg">
-        <div class="header">
-          <div class="title">Trending</div>
-        </div>
-        <div class="content">
-          <small>Todays #BreakAwayNote with givenbaloyi_</small>
-        </div>
-      </div>
-      <div class="stack-card">
-        <div class="program_tag">Instagram</div>
-        <img src="images/Illmatic Album Artwork.jpg">
-        <div class="header">
-          <div class="title">Trending</div>
-        </div>
-        <div class="content">
-          <small>
-            This #MandelaDay METRO FM will be renovating computer labs at Coronation Secondary School (Emalahleni)
-            and Violet Jiyane Junior Secondary (Carolina).
-
-          </small>
-        </div>
-      </div>
-      <div class="stack-card">
-        <div class="program_tag">Instagram</div>
-        <img src="images/dot.jpg">
-        <div class="header">
-          <div class="title">Trending</div>
-        </div>
-        <div class="content">
-          <small>Todays #BreakAwayNote with givenbaloyi_</small>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </section>
 </section>
@@ -323,7 +258,7 @@
 {% endblock page %}
 
 
-{% block js %}  
+{% block js %}
 <script>
   const mini_nav = document.querySelector('.main_nav div')
   console.log(mini_nav)
@@ -337,21 +272,21 @@
   const audio_progress = document.querySelector('.player_bar .progress')
 
   const play_btn = document.querySelector('.play_btn')
-  
+
   const togglePlay = () => {
     if (play_btn.id === 'play') {
       audio_file.play()
       audio_file.muted = false
       play_btn.id = 'pause'
       play_btn.innerHTML = 'stop'
-      document.querySelectorAll('.head_box .mid span small').forEach(bar=>{
+      document.querySelectorAll('.head_box .mid span small').forEach(bar => {
         bar.style.background = '#ea5e21'
       })
     } else {
       audio_file.pause()
       play_btn.id = 'play'
       play_btn.innerHTML = 'play_arrow'
-      document.querySelectorAll('.head_box .mid span small').forEach(bar=>{
+      document.querySelectorAll('.head_box .mid span small').forEach(bar => {
         bar.style.background = 'white'
       })
     }
@@ -361,4 +296,3 @@
 <script src="{% static 'listener/home.js' %}"></script>
 <script src="{% static 'stackgrid.js' %}"></script>
 {% endblock js %}
-  
