@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
+    'cloudinary_storage',
     'manager',
     'listener'
 ]
@@ -125,6 +127,8 @@ CLOUDINARY_STORAGE = {
     'API_KEY' : '482295267852992',
     'API_SECRET' : '9X_kzT8VXq9a4_UY6qTr6jQ1X1o'
 }
+
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

@@ -52,7 +52,7 @@
           muted></audio>
         <section class="cover" style="flex-direction: column;">
           <button class="material-symbols-outlined play_btn" id="play" onclick="togglePlay()">play_arrow</button>
-          <span
+          <span id="listen_box"
             style="background: var(--var-theme); color: white; padding: 8px 10px; margin-top: 5px; border-radius: 3px; cursor: pointer;"
             onclick="togglePlay()">Listen Live</span>
         </section>
@@ -271,10 +271,12 @@
   const audio_file = document.querySelector('audio')
   const audio_progress = document.querySelector('.player_bar .progress')
 
+  const listen_box = document.getElementById('listen_box')
   const play_btn = document.querySelector('.play_btn')
 
   const togglePlay = () => {
     if (play_btn.id === 'play') {
+      listen_box.innerHTML = 'Listening Live'
       audio_file.play()
       audio_file.muted = false
       play_btn.id = 'pause'
@@ -283,6 +285,7 @@
         bar.style.background = '#ea5e21'
       })
     } else {
+      listen_box.innerHTML = 'Listen Live'
       audio_file.pause()
       play_btn.id = 'play'
       play_btn.innerHTML = 'play_arrow'
