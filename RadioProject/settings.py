@@ -15,6 +15,7 @@ SECRET_KEY = 'django-insecure-hiy3km6!8ksf_s)u4t(8=v6t$2@(io^5qzfaq956*nz%@(w-w2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://pod-web.onrender.com']
 AUTH_USER_MODEL = 'manager.User'
 
 # Application definition
@@ -117,6 +118,13 @@ STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME' : 'dvnemzw0z',
+    'API_KEY' : '482295267852992',
+    'API_SECRET' : '9X_kzT8VXq9a4_UY6qTr6jQ1X1o'
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
