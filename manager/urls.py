@@ -7,12 +7,12 @@ urlpatterns = [
     path('programs', views.programs, name='programs_page'),
     path('delete_program', views.delete_program),
 
-    path('podcasts', views.podcasts, name='podcasts_page'),
-    path('delete_podcast', views.delete_podcast),
+    path('announcements', views.announcements, name='announcements_page'),
+    path('delete_announcement', views.delete_announcement),
 
-    path('blogs', views.blogs, name='blogs_page'),
-    path('delete_blog', views.delete_blog),
+    path('local_news', views.local_news, name='local_news_page'),
+    path('delete_local_news', views.delete_local_news),
 
-    path('competitions', views.competitions, name='competitions_page'),
-    path('delete_competition', views.delete_competition),
+    path('global_news', views.global_news, name='global_news_page'),
+    path('delete_global_news', views.delete_global_news),
 ]

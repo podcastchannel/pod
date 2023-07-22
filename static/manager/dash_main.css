@@ -57,8 +57,8 @@
   width: 3%;
   padding: 5vh 1%;
   height: 90vh;
-  overflow-x: hidden;
-  overflow-y: auto;
+  /* overflow-x: hidden; */
+  /* overflow-y: auto; */
   border-right: 1px dotted wheat;
   display: flex;
   flex-direction: column;
@@ -300,7 +300,9 @@ label {
 }
 
 @media all and (max-width:1300px) {
-
+  #logo{
+    width: 70px;
+  }
   .sideBar,
   .sideBar.change {
     width: 250px;

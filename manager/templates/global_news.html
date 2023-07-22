@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'component.css' %}">
+<link rel="stylesheet" href="{% static 'manager/dash_main.css' %}">
+{% endblock css %}
+
+
+{% block page %}
+<section class="prompt_box">
+  <div>
+    <p>Are you sure you want to delete</p>
+    <span></span>
+  </div>
+  <nav>
+    <button>Yes</button>
+    <button>No</button>
+  </nav>
+</section>
+
+{% include "sideBar.html" %}
+
+<section class="main">
+  <section class="main_cover" onclick="toggleProgramForm()"></section>
+  <section class="add_program_box">
+    <button type="button" class="material-symbols-outlined" style="cursor: pointer;"
+      onclick="toggleProgramForm()">close</button>
+    <form method="post" id="program_form" enctype="multipart/form-data">
+      {% csrf_token %}
+      <section>
+        <span id="program_type">New Global News</span>
+        <input type="number" name="id" readonly style="display: none;">
+      </section>
+
+      <hr style="width: 90%; border-top: 1px solid darkgray;">
+
+      <section class="info_form">
+        <input type="text" name="py_day" style="display: none;">
+        <div>
+          <small>Global News Name</small>
+          <input type="text" name="name" required>
+        </div>
+        <div>
+          <small>Description</small>
+          <textarea name="description" required style="height: 300px;"></textarea>
+        </div>
+      </section>
+
+      <section>
+        <label for="add_image" class="image_label">
+          <div class="img_box">
+            <i class="material-symbols-outlined" style="font-size: 4rem;">add_a_photo</i>
+            <input style="display: none;" type="file" name="image" id="add_image" accept="image/*"
+              onchange="addImage(event.target, event.target.parentElement)">
+          </div>
+        </label>
+      </section>
+
+      <hr style="width: 90%; border-top: 1px solid darkgray;">
+
+      <section class="info_form">
+        <div>
+          <small>Share Link</small>
+          <textarea name="share_link"></textarea>
+        </div>
+        <div>
+          <small>Social Accounts (seperate with commas)</small>
+          <textarea name="social_accounts"></textarea>
+        </div>
+      </section>
+
+      <section>
+        <button type="submit">Done</button>
+      </section>
+    </form>
+  </section>
+
+  <header class="main_header">
+    <i class="material-symbols-outlined">breaking_news</i>
+    <span>Global News</span>
+  </header>
+
+
+  <section>
+    <div class="program" style="font-size:4rem;align-items: center;cursor:pointer; justify-content: center;"
+      onclick="toggleProgramForm(event.target)">
+      +
+    </div>
+  </section>
+
+  <section class="search_box">
+    <input type="text" placeholder="Global News search" name="program_search"
+      oninput="searchProgram(event.target.value.toLowerCase())">
+
+    <h4></h4>
+  </section>
+
+
+
+  <section class="day_box" data-program_list="{{program_list}}">
+    <section class="day">
+      <header>Global News</header>
+      <section class="program_box">
+      </section>
+    </section>
+    <style>
+      .main {
+        min-height: 90vh;
+      }
+
+      .day_box {
+        display: flex;
+        gap: 3rem;
+        flex-direction: column;
+      }
+
+      .day {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem 0;
+      }
+
+      .day header {
+        color: wheat;
+        font-size: 1.5rem;
+        padding: 5px 0;
+        border-bottom: 1px dotted wheat;
+      }
+    </style>
+  </section>
+</section>
+
+{% endblock page %}
+
+
+
+{% block js %}
+<script src="{% static 'manager/dashboard.js' %}"></script>
+<script src="{% static 'manager/program.js' %}"></script>
+<script>
+  const delete_program = (el, el_id, el_name) => {
+    prompt_box.children[0].children[1].innerHTML = el_name
+    prompt_box.classList.add('change')
+
+    prompt_box.onclick = (e) => {
+      if (e.target.innerHTML === 'Yes') {
+        runAxios('delete_global_news', el_id)
+        runDeleteAnime(el.parentElement.parentElement)
+        prompt_box.classList.remove('change')
+      } else if (e.target.innerHTML === 'No') {
+        prompt_box.classList.remove('change')
+      }
+    }
+  }
+</script>
+{% endblock js %}

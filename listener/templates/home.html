@@ -5,195 +5,140 @@
 {% block css %}
 <link rel="stylesheet" href="{% static 'listener/home.css' %}">
 <link rel="stylesheet" href="{% static 'component.css' %}">
-<link rel="stylesheet" href="{% static 'stackgrid.css' %}" />
+<link rel="stylesheet" href="{% static 'stackgrid.css' %}">
+<title>Document</title>
 {% endblock css %}
 
 
 
-{% block page %}
-<section class="top_box" style="background: var(--var-theme); color: white; font-size: 1.5rem;">
-  <i class="fa-brands fa-twitter"></i>
-  <i class="fa-brands fa-youtube"></i>
-  <i class="fa-brands fa-instagram"></i>
-</section>
 
-<nav class="main_nav">
+{% block page %}
+<nav class="top_nav">
+  <a href="">Home</a>
   <section>
-    <img src="https://res.cloudinary.com/dvnemzw0z/image/upload/v1689698849/logo_ftfbmr.png" alt="" id="logo">
-    <span class="program_name">OBBN Radio</span>
-    <button class="material-symbols-outlined" onclick="toggleMiniNav()">menu</button>
+    <div>
+      <a href="">Galleries</a>
+      <a href="">FAQ</a>
+      <a href="">About Us</a>
+      <a href="">Contact Us</a>
+    </div>
+    <div>
+      <i class="material-symbols-outlined">search</i>
+      <input type="text" placeholder="Search">
+    </div>
   </section>
-  <div>
-    <a href="">Home</a>
-    <a href="">Galleries</a>
-    <a href="">FAQ</a>
-    <a href="">About Us</a>
-    <a href="">Contact Us</a>
-  </div>
 </nav>
 
 <section class="head_box">
-  <section class="head_box_cover"
-    style="background-image: url({{program.thumb.url}}); background-position: center; background-size: cover;">
-  </section>
-  <section class="head_box_con">
-    <section class="left">
-      <p>News, Entertainment, Fashion & Lifestyle, Sports, Technology, and many more...</p>
-
-
-      <button><i class="material-symbols-outlined">play_arrow</i> Start Listening</button>
-      <nav>
-        <i class="fa-brands fa-google-play"></i>
-        <i class="fa-brands fa-apple"></i>
-      </nav>
-    </section>
-
-    <section class="mid">
-      <div style="background-image: url({{program.thumb.url}});">
-        <audio src="https://res.cloudinary.com/dvnemzw0z/video/upload/v1689936697/Burna_Boy_-_Real_Life_feat._Stormzy_Official_Audio_prcull.mp3" style="display: none;"
-          muted></audio>
-        <section class="cover" style="flex-direction: column;">
-          <button class="material-symbols-outlined play_btn" id="play" onclick="togglePlay()">play_arrow</button>
-          <span id="listen_box"
-            style="background: var(--var-theme); color: white; padding: 8px 10px; margin-top: 5px; border-radius: 3px; cursor: pointer;"
-            onclick="togglePlay()">Listen Live</span>
+  <section class="wrapper">
+    <section class="part">
+      <div class="logo_box_holder">
+        <img src="https://res.cloudinary.com/dvnemzw0z/image/upload/v1689698849/logo_ftfbmr.png" id="logo">
+        <section class="logo_box" style="background-image: url({{program.thumb.url}});">
         </section>
       </div>
-      <section class="play_box">
-        <button class="material-symbols-outlined" onclick="togglePlay()">headphones</button>
-        <span class="bar_box">
-          <small></small>
-          <small></small>
-          <small></small>
-          <small></small>
-          <small></small>
-        </span>
+      <section class="player_box" style="z-index: 50;">
+        <audio
+          src="https://res.cloudinary.com/dvnemzw0z/video/upload/v1689936697/Burna_Boy_-_Real_Life_feat._Stormzy_Official_Audio_prcull.mp3"
+          style="display: none;"></audio>
+        <div class="top">
+          <button class="material-symbols-outlined play_btn" id="play" onclick="togglePlay()">play_arrow</button>
+          <span class="bar_box">
+            <small></small>
+            <small></small>
+            <small></small>
+            <small></small>
+            <small></small>
+          </span>
+        </div>
+        <hr style="width: 100%; border-top: 1px solid var(--var-bg);">
 
-        <p>
-          <span><i class="material-symbols-outlined">mic</i> {{program.name}}</span>
-          <span><i class="material-symbols-outlined" id="clock">schedule</i> On air</span>
-          <span><i class="material-symbols-outlined">music_note</i> Now playing </span>
-          <span><i class="material-symbols-outlined">timer</i> {{program.start_date|date:'h:i'}} -
-            {{program.end_date|date:'h:i'}} </span>
-        </p>
-        <!-- <button></button> -->
+        <div class="low">
+          <p><i class="material-symbols-outlined">radio</i> <span>{{now_program.name}}</span></p>
+          <p><i class="material-symbols-outlined" id="clock">schedule</i> <span>ON AIR:</span>
+            <small>{{now_program.start_date|date:'G:i'}} -
+              {{now_program.end_date|date:'G:i'}}</small></p>
+          <p><i class="material-symbols-outlined">music_note</i> <span>NOW PLAYING:-</span></p>
+        </div>
       </section>
     </section>
 
-    <section class="right info_holder">
-      <div class="info">
-        <p>
-          <span>3K+</span>
-          <small>Active users</small>
-        </p>
-        <p>
-          <span>200+</span>
-          <small>Programs</small>
-        </p>
-        <p>
-          <span>30+</span>
-          <small>Dj's</small>
-        </p>
-      </div>
-      <nav>
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-youtube"></i>
-        <i class="fa-brands fa-instagram"></i>
-      </nav>
+    <div class="next_box">
+      <i class="material-symbols-outlined">chevron_right</i>
+      <span>Up Next</span>
+    </div>
+
+    <section class="part">
+      <section class="player_box" style="border-radius: 10px;">
+        <div class="top">
+          <img src="images/kanye.jpg" alt="">
+          <i class="material-symbols-outlined">timer</i>
+        </div>
+        <hr style="width: 100%; border-top: 1px solid var(--var-bg);">
+
+        <div class="low">
+          <p><i class="material-symbols-outlined">radio</i> <span>{{next_program.name}}</span></p>
+          <p><i class="material-symbols-outlined" id="clock">schedule</i> <span>UP NEXT:</span>
+            <small>{{next_program.start_date|date:'G:i'}} -
+              {{next_program.end_date|date:'G:i'}}</small></p>
+          <!-- <p><i class="material-symbols-outlined">music_note</i> <span>NOW PLAYING:-</span></p> -->
+        </div>
+      </section>
     </section>
   </section>
 </section>
 
-<section class="low_box">
-  <section class="con">
+<section class="social_box">
+  <section class="media_box">
+    <strong>Follow Us On</strong>
+    <div class="item_box">
+      <i class="fa-brands fa-twitter"></i>
+      <i class="fa-brands fa-youtube"></i>
+      <i class="fa-brands fa-instagram"></i>
+      <i class="fa-brands fa-facebook"></i>
+      <i class="fa-brands fa-google"></i>
+      <i class="fa-brands fa-yahoo"></i>
+      <i class="fa-brands fa-tiktok"></i>
+      <i class="fa-brands fa-snapchat"></i>
+    </div>
+  </section>
+
+  <section class="event_box">
     <section class="con_section">
-      <h3>Line Up & Dj's</h3>
+      <h3>Upcoming Programs</h3>
       <section class="program_box">
-        {% for item in programs %}
+        {% for program in programs %}
         <div class="program">
-          <div class="img_box" style="background-image: url({{item.thumb.url}});"></div>
+          <div class="img_box" style="background-image: url(images/dot.jpg);"></div>
           <p>
-            <strong>{{item.name}}</strong>
-            <small><i class="material-symbols-outlined">timer</i> {{item.start_date|date:'h:i'}} -
-              {{item.end_date|date:'h:i'}} </small>
+            <strong style="color: black;">{{program.name}}</strong>
+            <small><i class="material-symbols-outlined">timer</i> {{program.start_date|date:'G:i'}} -
+              {{program.end_date|date:'G:i'}} </small>
             <small><i class="material-symbols-outlined">play_arrow</i> Latest Episode</small>
           </p>
-          <div class="program_tag">Live Now</div>
+          <div class="program_tag radio_tag">Live Now</div>
         </div>
         {% endfor %}
       </section>
     </section>
-
-    <script>
-      let Lineup_tags = ['Live Now', 'Up Next', 'Later', 'Still to come']
-      const program_tags = document.querySelectorAll('.program_tag')
-
-      program_tags.forEach((el, i) => {
-        el.innerHTML = Lineup_tags[i]
-      })
-    </script>
-
-    <section class="con_section">
-      <h3>Podcasts</h3>
-      <section class="program_box">
-        {% for item in podcasts %}
-        <div class="program">
-          <div class="img_box" style="background-image: url({{item.thumb.url}});"></div>
-          <p>
-            <strong>{{item.name}}</strong>
-            <span class="prog_text">{{item.description}}</span>
-            <small><i class="material-symbols-outlined">timer</i> {{item.start_date|date:'h:i'}} -
-              {{item.end_date|date:'h:i'}} </small>
-          </p>
-          <div class="program_tag material-symbols-outlined">podcasts</div>
-        </div>
-        {% endfor %}
-      </section>
-    </section>
-
-    <section class="con_section">
-      <h3>Competitions</h3>
-      <section class="program_box">
-        {% for item in competitions %}
-        <div class="program">
-          <div class="img_box" style="background-image: url({{item.thumb.url}});"></div>
-          <p>
-            <strong>{{item.name}}</strong>
-            <span class="prog_text">{{item.description}}</span>
-            <small><i class="material-symbols-outlined">timer</i> {{item.start_date|date:'jS F,Y'}} -
-              {{item.end_date|date:'jS F,Y'}} </small>
-          </p>
-          <div class="program_tag material-symbols-outlined">trophy</div>
-        </div>
-        {% endfor %}
-      </section>
-    </section>
-
-    <style>
-      .prog_text{
-        height: 50px;
-        overflow: hidden;
-        font-size: 0.8rem;
-        color: rgb(77, 77, 77);
-      }
-    </style>
-
   </section>
 </section>
-<section class="social_box">
-  <section class="con">
-    <h3>Live Social Feed</h3>
-    <div class="posts stack-container" max-width="640" min-width="280" gutter="10">
 
-      {% for blog in blogs %}
+<section class="news_box">
+  <section class="con">
+    <h3>Announcements</h3>
+    <div class="posts stack-container" max-width="840" min-width="205" gutter="10">
+      {% for item in anns %}
       <div class="stack-card">
-        <div class="program_tag">{{blog.name}}</div>
-        <img src="{{blog.thumb.url}}">
+        <i class="material-symbols-outlined program_tag">campaign</i>
+        <img src="{{item.thumb.url}}">
         <div class="header">
-          <div class="title"><i class="material-symbols-outlined">trending_up</i></div>
+          <div class="title">{{item.name}}</div>
         </div>
         <div class="content">
-          <small>{{blog.description}}</small>
+          <small>
+            {{item.description}}
+          </small>
         </div>
       </div>
       {% endfor %}
@@ -201,18 +146,42 @@
   </section>
 </section>
 
-<script>
-  document.querySelectorAll('.stack-card').forEach((el, i) => {
-    anime({
-      targets: el,
-      delay: 50 * i,
-      translateY: [40, 0],
-      opacity: [0, 1],
-      easing: 'easeInOutExpo',
-      // scale : [0,1]
-    })
-  })
-</script>
+<section class="low_box">
+  <section class="con">
+    <section class="con_section">
+      <h3>Global Ghana News</h3>
+      <section class="program_box">
+        <div class="program">
+          <div class="img_box" style="background-image: url(images/ford.webp);"></div>
+          <p>
+            <strong>Ford Competition</strong>
+            <span style="color: rgb(71, 71, 71);">
+              Add the WOW!-factor to your winter: Enter the Clere WOW!-moment competition, right here on METRO FM
+            </span>
+            <small>Events | 20 Jun 2023</small>
+          </p>
+        </div>
+      </section>
+    </section>
+
+    <section class="con_section">
+      <h3>Local Ghana News</h3>
+      <section class="program_box">
+        <div class="program">
+          <div class="img_box" style="background-image: url(images/home1.avif);"></div>
+          <p>
+            <strong>Ford Competition</strong>
+            <span style="color: rgb(71, 71, 71);">
+              Add the WOW!-factor to your winter: Enter the Clere WOW!-moment competition, right here on METRO FM
+            </span>
+            <small>Events | 20 Jun 2023</small>
+          </p>
+        </div>
+      </section>
+    </section>
+  </section>
+</section>
+</section>
 
 <footer>
   <section>
@@ -241,63 +210,10 @@
     </div>
   </section>
 </footer>
-<section class="last_box">
-  <div class="info">
-    <p>
-      <span>3K+</span>
-      <small>Active users</small>
-    </p>
-    <p>
-      <span>200+</span>
-      <small>Programs</small>
-    </p>
-    <p>
-      <span>30+</span>
-      <small>Dj's</small>
-    </p>
-  </div>
-</section>
 {% endblock page %}
 
 
 {% block js %}
-<script>
-  const mini_nav = document.querySelector('.main_nav div')
-  console.log(mini_nav)
-
-  const toggleMiniNav = () => {
-    mini_nav.classList.toggle('change')
-  }
-</script>
-<script>
-  const audio_file = document.querySelector('audio')
-  const audio_progress = document.querySelector('.player_bar .progress')
-
-  const listen_box = document.getElementById('listen_box')
-  const play_btn = document.querySelector('.play_btn')
-
-  const togglePlay = () => {
-    if (play_btn.id === 'play') {
-      listen_box.innerHTML = 'Listening Live'
-      audio_file.play()
-      audio_file.muted = false
-      play_btn.id = 'pause'
-      play_btn.innerHTML = 'stop'
-      document.querySelectorAll('.head_box .mid span small').forEach(bar => {
-        bar.style.background = '#ea5e21'
-      })
-    } else {
-      listen_box.innerHTML = 'Listen Live'
-      audio_file.pause()
-      play_btn.id = 'play'
-      play_btn.innerHTML = 'play_arrow'
-      document.querySelectorAll('.head_box .mid span small').forEach(bar => {
-        bar.style.background = 'white'
-      })
-    }
-  }  
-</script>
-
 <script src="{% static 'listener/home.js' %}"></script>
 <script src="{% static 'stackgrid.js' %}"></script>
 {% endblock js %}

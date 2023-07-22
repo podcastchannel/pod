@@ -1,16 +1,25 @@
 <section class="sideBar">
   <button class="material-symbols-outlined" onclick="toggleSideBar()">linear_scale</button>
   <header>
-    <img src="https://res.cloudinary.com/dvnemzw0z/image/upload/v1689698849/logo_ftfbmr.png" id="logo">
+    <img src="https://res.cloudinary.com/dvnemzw0z/image/upload/v1689698849/logo_ftfbmr.png">
   </header>
   <nav>
     <a href="{% url 'dashboard_page' %}"> <i class="material-symbols-outlined">dashboard</i> <span>Dashboard</span> </a>
     <a href="{% url 'programs_page' %}"> <i class="material-symbols-outlined">radio</i> <span>Programs</span> </a>
-    <a href="{% url 'podcasts_page' %}"> <i class="material-symbols-outlined">podcasts</i> <span>Podcasts</span></a>
-    <a href="{% url 'blogs_page' %}"> <i class="material-symbols-outlined">trending_up</i> <span>Blogs</span></a>
-    <a href="{% url 'competitions_page' %}"> <i class="material-symbols-outlined">trophy</i> <span>Competitions</span> </a>
+    <a href="{% url 'announcements_page' %}"> <i class="material-symbols-outlined">campaign</i> <span>Announcements</span></a>
+    <a href="{% url 'local_news_page' %}"> <i class="material-symbols-outlined">news</i> <span>Local News</span></a>
+    <a href="{% url 'global_news_page' %}"> <i class="material-symbols-outlined">breaking_news</i> <span>Global News</span> </a>
   </nav>
   <footer>
     <a class="material-symbols-outlined">power_settings_new</a>
   </footer>
 </section>
+
+<style>
+  .sideBar img{
+    width: 50px;
+  }
+  .sideBar.change img{
+    width: 100px;
+  }
+</style>

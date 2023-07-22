@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.middleware.csrf import get_token
 from django.utils import timezone
 from datetime import datetime, timedelta
-from .models import Program,Podcast,Blog,Competition
+from .models import Program,Announcement,LocalNew,GlobalNew
 import json
 
 
@@ -11,12 +11,12 @@ def dashboard(request):
     context = {
         'programs': Program.objects.all()[:4],
         'program_count': Program.objects.count(),
-        'podcasts' : Podcast.objects.all()[:5],
-        'podcast_count': Podcast.objects.count(),
-        'competitions' : Competition.objects.all()[:5],
-        'competition_count': Competition.objects.count(),
-        'blogs' : Blog.objects.all()[:5],
-        'blog_count' : Blog.objects.count()
+        'anns' : Announcement.objects.all()[:5],
+        'ann_count': Announcement.objects.count(),
+        'global_news' : GlobalNew.objects.all()[:5],
+        'global_news_count': GlobalNew.objects.count(),
+        'local_news' : LocalNew.objects.all()[:5],
+        'local_news_count': LocalNew.objects.count(),
     }
     return render(request, 'dashboard.html', context)
 
@@ -81,41 +81,6 @@ def delete_program(request):
     Program.objects.get(id=int(json_data)).delete()
     return JsonResponse({'test':'del_program'})
 
-def podcasts(request):
-    program_list = []
-    for program in Podcast.objects.order_by('start_date'):
-        program_obj = {}
-        fix_obj_1(program_obj, program)
-        program_obj['one_off'] = program.one_off
-        program_obj['audio'] = program.audio.url
-        program_list.append(program_obj)
-
-    if request.method == 'POST':
-        if request.POST.get('id'):
-            program = Podcast.objects.get(id=request.POST.get('id'))
-            if 'image' in request.FILES:
-                program.thumb = request.FILES['image']
-            if 'audio' in request.FILES:
-                program.audio = request.FILES['audio']
-        else:
-            program = Podcast()
-            program.thumb = request.FILES['image']
-            program.audio = request.FILES['audio']
-
-        create_program(request, program)
-        program.save()
-        return redirect('podcasts_page')
-    context = {
-        'token' : get_token(request),
-        'program_list': json.dumps(program_list),
-    }
-    return render(request, 'podcasts.html', context)
-
-def delete_podcast(request):
-    json_data = json.loads(request.body)['data']
-    Podcast.objects.get(id=int(json_data)).delete()
-    return JsonResponse({'test':'del_pod'})
-
 
 def fix_obj_2(obj, item):
     obj['id'] = item.id
@@ -126,77 +91,89 @@ def fix_obj_2(obj, item):
     obj['share_link'] = item.share_link
     obj['social_accounts'] = item.social_accounts
 
-def create_program_2(request, program):
+def create_program_2(request, obj):
+    if request.POST.get('id'):
+        program = obj.objects.get(id=request.POST.get('id'))
+        if 'image' in request.FILES:
+            program.thumb = request.FILES['image']
+    else:
+        program = obj()
+        program.thumb = request.FILES['image']
     program.name = request.POST.get('name').upper()
     program.description = request.POST.get('description')
     if request.POST.get('share_link'):
         program.share_link = request.POST.get('share_link')
     if request.POST.get('social_accounts'):
         program.social_accounts = request.POST.get('social_accounts')
+    program.save()
 
-def blogs(request):
+def announcements(request):
     program_list = []
-    for program in Blog.objects.order_by('start_date'):
+    for program in Announcement.objects.order_by('start_date'):
         program_obj = {}
         fix_obj_2(program_obj, program)
-        program_obj['share_link'] = program.share_link
-        program_obj['social_accounts'] = program.social_accounts
         program_list.append(program_obj)
+
     if request.method == 'POST':
-        if request.POST.get('id'):
-            if request.POST.get('id'):
-                program = Blog.objects.get(id=request.POST.get('id'))
-                if request.FILES:
-                    program.thumb = request.FILES['image']
-        else:
-            program = Blog()
-            program.thumb = request.FILES['image']
-            program.start_date = datetime.today()
-        create_program_2(request, program)
-        program.save()
-        return redirect('blogs_page')
+        create_program_2(request, Announcement)
+        return redirect('announcements_page')
     context = {
         'token' : get_token(request),
         'program_list': json.dumps(program_list),
     }
-    return render(request, 'blogs.html', context)
+    return render(request, 'announcements.html', context)
 
-def delete_blog(request):
+def delete_announcement(request):
     json_data = json.loads(request.body)['data']
-    Blog.objects.get(id=int(json_data)).delete()
-    return JsonResponse({'test':'del_blog'})
+    Announcement.objects.get(id=int(json_data)).delete()
+    return JsonResponse({'test':'del_pod'})
 
-def competitions(request):
+def local_news(request):
     program_list = []
-    for program in Competition.objects.order_by('start_date'):
+    for program in LocalNew.objects.order_by('start_date'):
         program_obj = {}
         fix_obj_2(program_obj, program)
-        
-        program_obj['end_date'] = program.end_date.strftime('%Y-%m-%d %H:%M:%S')
-        program_obj['days_left'] = (program.start_date - timezone.now()).days
         program_list.append(program_obj)
+
     if request.method == 'POST':
-        if request.POST.get('id'):
-            if request.POST.get('id'):
-                program = Competition.objects.get(id=request.POST.get('id'))
-                if request.FILES:
-                    program.thumb = request.FILES['image']
-        else:
-            program = Competition()
-            program.thumb = request.FILES['image']
-        create_program_2(request, program)
-        program.start_date = request.POST.get('start_time')
-        program.end_date = request.POST.get('end_time')
-        program.save()
-        return redirect('competitions_page')
+        create_program_2(request, LocalNew)
+        return redirect('local_news_page')
     context = {
         'token' : get_token(request),
         'program_list': json.dumps(program_list),
     }
-    return render(request, 'competitions.html', context)
+    return render(request, 'local_news.html', context)
 
-def delete_competition(request):
+def delete_local_news(request):
     json_data = json.loads(request.body)['data']
-    Competition.objects.get(id=int(json_data)).delete()
-    return JsonResponse({'test':'del_competition'})
+    LocalNew.objects.get(id=int(json_data)).delete()
+    return JsonResponse({'test':'del_pod'})
+
+def global_news(request):
+    program_list = []
+    for program in GlobalNew.objects.order_by('start_date'):
+        program_obj = {}
+        fix_obj_2(program_obj, program)
+        program_list.append(program_obj)
+
+    if request.method == 'POST':
+        create_program_2(request, GlobalNew)
+        return redirect('global_news_page')
+    context = {
+        'token' : get_token(request),
+        'program_list': json.dumps(program_list),
+    }
+    return render(request, 'global_news.html', context)
+
+def delete_global_news(request):
+    json_data = json.loads(request.body)['data']
+    GlobalNew.objects.get(id=int(json_data)).delete()
+    return JsonResponse({'test':'del_pod'})
+
+
+
+
+
+
+
 

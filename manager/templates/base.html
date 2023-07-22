@@ -69,12 +69,6 @@
       font-weight: 400;
     }
 
-    #logo {
-      height: 100px;
-      object-fit: contain;
-      aspect-ratio: 4/3;
-    }
-
     div::-webkit-scrollbar,
     section::-webkit-scrollbar {
       height: 10px;
@@ -87,11 +81,6 @@
     section::-webkit-scrollbar-thumb {
       background: white;
       border-radius: 100px;
-    }
-    @media all and (max-width:500px){
-      #logo {
-        height: 70px;
-      }
     }
   </style>
 </head>
@@ -121,6 +110,14 @@
   </script>
 
   <script>
+    const runSearchAnime = (el) => {
+      anime({
+        targets: el,
+        translateY: [-30, 0],
+        opacity: [0, 1],
+      })
+    }
+
     const runDeleteAnime = (el) => {
       anime({
         targets: el,
@@ -132,6 +129,11 @@
           el.remove()
         }
       })
+    }
+  </script>
+  <script>
+    const createRealDate = (date_obj) => {
+      return date_obj.toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric", })
     }
   </script>
 
