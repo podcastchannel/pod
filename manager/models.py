@@ -54,8 +54,7 @@ class Announcement(models.Model):
 class GlobalNew(models.Model):
     name = models.CharField(max_length=300)
     description = models.TextField(max_length=1000)
-    start_date = models.DateTimeField(default=timezone.now)
-    end_date = models.DateTimeField(default=timezone.now)
+    start_date = models.DateTimeField(auto_now_add=True)
     # thumb = models.ImageField(default='default.jpg', upload_to='pics')
     thumb =  CloudinaryField("Image" ,folder='RadioProject', resource_type='auto')
     share_link = models.CharField(max_length=3000, default='home.html')
@@ -71,8 +70,7 @@ class GlobalNew(models.Model):
 class LocalNew(models.Model):
     name = models.CharField(max_length=300)
     description = models.TextField(max_length=1000)
-    start_date = models.DateTimeField(default=timezone.now)
-    end_date = models.DateTimeField(default=timezone.now)
+    start_date = models.DateTimeField(auto_now_add=True)
     # thumb = models.ImageField(default='default.jpg', upload_to='pics')
     thumb =  CloudinaryField("Image" ,folder='RadioProject', resource_type='auto')
     share_link = models.CharField(max_length=3000, default='home.html')

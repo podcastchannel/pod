@@ -9,7 +9,7 @@ def home(request):
         'next_program' : Program.objects.order_by('start_date')[1],
         'programs' : Program.objects.order_by('start_date')[1:4],
         'anns' : Announcement.objects.order_by('start_date')[:6],
-        # 'competitions' : Competition.objects.order_by('start_date')[:4],
-        # 'blogs' : Blog.objects.order_by('start_date')[:6]
+        'local_news' : LocalNew.objects.order_by('start_date')[:4],
+        'global_news' : GlobalNew.objects.order_by('start_date')[:4]
     }
     return render(request, 'home.html', context)
