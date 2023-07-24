@@ -170,10 +170,13 @@ def delete_global_news(request):
     GlobalNew.objects.get(id=int(json_data)).delete()
     return JsonResponse({'test':'del_pod'})
 
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 def now_playing(request):
     return render(request, 'now_playing.html')
 
+@csrf_exempt
 def now_playing_php(request):
     return render(request, 'now_playing.php')
 
