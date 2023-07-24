@@ -287,6 +287,9 @@ footer div a {
 }
 
 @media all and (max-width:1450px) {
+  .event_box .program_box{
+    justify-content: space-around;
+  }
   .event_box .program:nth-child(3) {
     display: none;
   }
