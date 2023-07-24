@@ -180,6 +180,9 @@ def now_playing(request):
 def now_playing_php(request):
     return render(request, 'now_playing.php')
 
+@csrf_exempt
+def now_playing_txt(request):
+    return render(request, 'now_playing.txt')
 
 
 
