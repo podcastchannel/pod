@@ -36,7 +36,7 @@
                 document.querySelector('#np_recent_tracks').innerHTML = t;
             }
         };
-        xmlhttp.open("GET", "media/nowplaying_title.txt?"  + new Date().getTime(), true);
+        xmlhttp.open("GET", "/media/now_playing.txt?"  + new Date().getTime(), true);
         xmlhttp.send();
     }
 
