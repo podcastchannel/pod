@@ -208,6 +208,15 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+}
+
+.program .text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
 }
 
 .news_box {
