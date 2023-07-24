@@ -18,5 +18,7 @@ urlpatterns = [
 
     path('now_playing', views.now_playing),
     path('now_playing/now_playing.php', views.now_playing_php),
-    path('now_playing.txt', views.now_playing_txt)
+    path('now_playing.txt', views.now_playing_txt),
+
+    path('play', views.play)
 ]

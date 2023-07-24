@@ -184,6 +184,17 @@ def now_playing_php(request):
 def now_playing_txt(request):
     return render(request, 'now_playing.txt')
 
+@csrf_exempt
+def play(request):
+    if request.method == 'POST':
+        line = request.POST
+    else:
+        line = 'Omar'
+    context ={
+        'line' : line
+    }
+    return render(request, 'play.html', context)
+
 
 
 

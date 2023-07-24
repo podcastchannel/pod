@@ -17,7 +17,7 @@ if ($_REQUEST['key'] !== $key) {
 $title = htmlspecialchars($_REQUEST['casttitle']);
 
 //save current track title and update history
-$file = '/now_playing.txt';
+$file = 'now_playing.txt';
 $recent = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 $recent = array_slice($recent, 0, $max_recent);
 
