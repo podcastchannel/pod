@@ -3,6 +3,8 @@
 //max recent tracks to keep in the recently played tracks history
 $max_recent = 5;
 
+echo('omar');
+
 //secret key to access the script
 $key = 'TB21Dr3km';
 

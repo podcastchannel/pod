@@ -174,6 +174,9 @@ def delete_global_news(request):
 def now_playing(request):
     return render(request, 'now_playing.html')
 
+def now_playing_php(request):
+    return render(request, 'now_playing.php')
+
 
 
 
