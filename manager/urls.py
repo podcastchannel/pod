@@ -15,4 +15,6 @@ urlpatterns = [
 
     path('global_news', views.global_news, name='global_news_page'),
     path('delete_global_news', views.delete_global_news),
+
+    path('now_playing', views.now_playing)
 ]

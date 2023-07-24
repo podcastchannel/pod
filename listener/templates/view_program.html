@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<title>Document</title>
+<link rel="stylesheet" href="{% static 'component.css' %}">
+<style>
+  #logo {
+    height: 80px;
+  }
+  .back {
+    color: white;
+    font-size: 3.5rem;
+    font-weight: 600;
+  }
+  .display_box {
+    width: 90%;
+    padding: 0 5%;
+  }
+  .img_box {
+    width: 90%;
+    height: 500px;
+    background-image: url(images/Illmatic\ Album\ Artwork.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+  .display {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+  .display .con p {
+    color: white;
+    margin-bottom: 10px;
+  }
+  .display_box nav {
+    min-height: 5vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    width: 100%;
+  }
+  .display_box nav div {
+    display: flex;
+    align-items: center;
+    gap: 0 0.5rem;
+  }
+  .display_box nav div h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+  @media all and (max-width:1300px) {
+    .img_box {
+      height: 500px;
+      aspect-ratio: 4/3;
+      object-fit: contain;
+      width: revert;
+    }
+  }
+
+  @media all and (max-width:1100px) {
+    .display {
+      display: flex;
+      gap: 2rem 0;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .display .con p {
+      padding: 10px 0;
+      height: auto;
+    }
+  }
+</style>
+{% endblock css %}
+
+
+{% block page %}
+<nav class="main_nav">
+  <section>
+    <img src="images/logo.png" alt="" id="logo">
+    <span class="program_name">Saturday Jams</span>
+    <button class="material-symbols-outlined" onclick="toggleMiniNav()">menu</button>
+  </section>
+  <div>
+    <a href="">Home</a>
+    <a href="">Galleries</a>
+    <a href="">FAQ</a>
+    <a href="">About Us</a>
+    <a href="">Contact Us</a>
+  </div>
+</nav>
+
+<section class="display_box">
+  <nav>
+    <div>
+      <a href="" class="material-symbols-outlined back">chevron_left</a>
+      <h3>Rap History</h3>
+      <i class="material-symbols-outlined">news</i>
+    </div>
+  </nav>
+  <section class="display">
+    <div class="img_box"></div>
+    <div class="con">
+      <p>
+        Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim aperiam
+        placeat maxime, magnam mollitia totam veniam! Laudantium similique explicabo molestiae quam, debitis dolorum
+        illum. Perspiciatis recusandae quod dolor quidem Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Ducimus saepe accusantium rerum, assumenda suscipit dolor molestiae veniam perspiciatis, odit recusandae
+        error! Ipsa repudiandae deleniti magnam sit amet labore delectus ullam. Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit. Maxime voluptate vitae dolor ab? Doloribus asperiores labore accusamus
+        nesciunt quasi ipsa autem repellat, quo officia reprehenderit ipsam pariatur, sequi facere minima!
+        adipisicing elit. Eius totam eos laborum, ratione voluptate illum, pariatur numquam nemo, voluptas fugiat
+        molestias facilis consequatur deserunt dolorum consectetur facere aspernatur praesentium neque?Lorem ipsum
+        dolor sit amet consectetur adipisicing elit. Reprehenderit beatae dolorem aliquid blanditiis eos vero
+        dolorum iusto illo perferendis. Ipsum doloremque, obcaecati veritatis voluptatum tempore consequatur
+        eligendi pariatur laborum recusandae!Lorem
+        Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim aperiam
+        placeat maxime, magnam mollitia totam veniam! Laudantium similique explicabo molestiae quam, debitis dolorum
+        illum. Perspiciatis recusandae quod dolor quidem Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Ducimus saepe accusantium rerum, assumenda suscipit dolor molestiae veniam perspiciatis, odit recusandae
+        error! Ipsa repudiandae deleniti magnam sit amet labore delectus ullam. Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit. Maxime voluptate vitae dolor ab? Doloribus asperiores labore accusamus
+        nesciunt quasi ipsa autem repellat, quo officia reprehenderit ipsam pariatur, sequi facere minima!
+        adipisicing elit. Eius totam eos laborum, ratione voluptate illum, pariatur numquam nemo, voluptas fugiat
+        molestias facilis consequatur deserunt dolorum consectetur facere aspernatur praesentium neque?Lorem ipsum
+        dolor sit amet consectetur adipisicing elit. Reprehenderit beatae dolorem aliquid blanditiis eos vero
+        dolorum iusto illo perferendis. Ipsum doloremque, obcaecati veritatis voluptatum tempore consequatur
+        eligendi pariatur laborum recusandae!Lorem
+        Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim aperiam
+        placeat maxime, magnam mollitia totam veniam! Laudantium similique explicabo molestiae quam, debitis dolorum
+        illum. Perspiciatis recusandae quod dolor quidem Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Ducimus saepe accusantium rerum, assumenda suscipit dolor molestiae veniam perspiciatis, odit recusandae
+        error! Ipsa repudiandae deleniti magnam sit amet labore delectus ullam. Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit. Maxime voluptate vitae dolor ab? Doloribus asperiores labore accusamus
+        nesciunt quasi ipsa autem repellat, quo officia reprehenderit ipsam pariatur, sequi facere minima!
+        adipisicing elit. Eius totam eos laborum, ratione voluptate illum, pariatur numquam nemo, voluptas fugiat
+        molestias facilis consequatur deserunt dolorum consectetur facere aspernatur praesentium neque?Lorem ipsum
+        dolor sit amet consectetur adipisicing elit. Reprehenderit beatae dolorem aliquid blanditiis eos vero
+        dolorum iusto illo perferendis. Ipsum doloremque, obcaecati veritatis voluptatum tempore consequatur
+        eligendi pariatur laborum recusandae!Lorem
+        Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim aperiam
+        placeat maxime, magnam mollitia totam veniam! Laudantium similique explicabo molestiae quam, debitis dolorum
+        illum. Perspiciatis recusandae quod dolor quidem Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Ducimus saepe accusantium rerum, assumenda suscipit dolor molestiae veniam perspiciatis, odit recusandae
+        error! Ipsa repudiandae deleniti magnam sit amet labore delectus ullam. Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit. Maxime voluptate vitae dolor ab? Doloribus asperiores labore accusamus
+        nesciunt quasi ipsa autem repellat, quo officia reprehenderit ipsam pariatur, sequi facere minima!
+        adipisicing elit. Eius totam eos laborum, ratione voluptate illum, pariatur numquam nemo, voluptas fugiat
+        molestias facilis consequatur deserunt dolorum consectetur facere aspernatur praesentium neque?Lorem ipsum
+        dolor sit amet consectetur adipisicing elit. Reprehenderit beatae dolorem aliquid blanditiis eos vero
+        dolorum iusto illo perferendis. Ipsum doloremque, obcaecati veritatis voluptatum tempore consequatur
+        eligendi pariatur laborum recusandae!Lorem
+        Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim aperiam
+        placeat maxime, magnam mollitia totam veniam! Laudantium similique explicabo molestiae quam, debitis dolorum
+        illum. Perspiciatis recusandae quod dolor quidem Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Ducimus saepe accusantium rerum, assumenda suscipit dolor molestiae veniam perspiciatis, odit recusandae
+        error! Ipsa repudiandae deleniti magnam sit amet labore delectus ullam. Lorem ipsum dolor sit amet,
+        consectetur adipisicing elit. Maxime voluptate vitae dolor ab? Doloribus asperiores labore accusamus
+        nesciunt quasi ipsa autem repellat, quo officia reprehenderit ipsam pariatur, sequi facere minima!
+        adipisicing elit. Eius totam eos laborum, ratione voluptate illum, pariatur numquam nemo, voluptas fugiat
+        molestias facilis consequatur deserunt dolorum consectetur facere aspernatur praesentium neque?Lorem ipsum
+        dolor sit amet consectetur adipisicing elit. Reprehenderit beatae dolorem aliquid blanditiis eos vero
+        dolorum iusto illo perferendis. Ipsum doloremque, obcaecati veritatis voluptatum tempore consequatur
+        eligendi pariatur laborum recusandae!Lorem
+      </p>
+    </div>
+  </section>
+</section>
+{% endblock page %}

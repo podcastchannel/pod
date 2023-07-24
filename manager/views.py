@@ -171,7 +171,8 @@ def delete_global_news(request):
     return JsonResponse({'test':'del_pod'})
 
 
-
+def now_playing(request):
+    return render(request, 'now_playing.html')
 
 
 
