@@ -184,16 +184,17 @@ def now_playing_php(request):
 def now_playing_txt(request):
     return render(request, 'now_playing.txt')
 
+
+from urllib.parse import parse_qs, urlparse
+
 @csrf_exempt
 def play(request):
     if request.method == 'POST':
-        line = request.POST
-    else:
-        line = 'Omar'
-    context ={
-        'line' : line
-    }
-    return render(request, 'play.html', context)
+        title = request.POST.get('casttitle')
+        artwork = request.POST.get('artwork')
+        print(title)
+        print(artwork)
+    return render(request, 'play.html')
 
 
 

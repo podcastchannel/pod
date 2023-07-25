@@ -1,13 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <section class="page">
-    {{line}}
+
+    <!-- <script src="https://embed.radio.co/embed/s7b1693cc2/artwork.js"></script> -->
+    <!-- <script src="https://embed.radio.co/embed/s7b1693cc2/song.js"></script> -->
+
+    <script src="https://embed.radio.co/player/6bf2bf9.js"></script>
+
   </section>
+  <style>
+    iframe {
+      height: 500px;
+      width: 500px;
+    }
+    
+    #player{
+      scale: 0.5;
+      border: 2px solid salmon;
+    }
+
+    .radioco-player{
+      border: 3px solid gold;
+    }
+  </style>
+
+
+<script>
+  console.log(document.getElementById('player').children)
+</script>
 </body>
+
 </html>
