@@ -1,12 +1,12 @@
-import os
-from celery import Celery
-from datetime import timedelta
+# import os
+# from celery import Celery
+# from datetime import timedelta
  
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'RadioProject.settings')
-app = Celery('RadioProject')
-app.config_from_object('django.conf:settings', namespace='CELERY')
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'RadioProject.settings')
+# app = Celery('RadioProject')
+# app.config_from_object('django.conf:settings', namespace='CELERY')
  
-app.conf.timezone = 'UTC'
+# app.conf.timezone = 'UTC'
  
 # app.conf.beat_schedule = {
 #     "add_first": {
@@ -15,4 +15,4 @@ app.conf.timezone = 'UTC'
 #     },
 # }
  
-app.autodiscover_tasks()
+# app.autodiscover_tasks()

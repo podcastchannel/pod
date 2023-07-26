@@ -50,7 +50,7 @@ def create_program(request, program):
         program.one_off = False
 
 
-from django_celery_beat.models import CrontabSchedule, PeriodicTask, ClockedSchedule
+# from django_celery_beat.models import CrontabSchedule, PeriodicTask, ClockedSchedule
 
 def programs(request):
     program_list = []
@@ -75,7 +75,7 @@ def programs(request):
 
 
         # clock = 
-        ClockedSchedule.objects.create(date= program.start_date).save()
+        # ClockedSchedule.objects.create(date= program.start_date).save()
 
         # crontab = CrontabSchedule.objects.create(minutes= date_obj.minute, hours=date_obj.hour, day_of)
 

@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'cloudinary_storage',
-    'django_celery_beat',
+    # 'django_celery_beat',
     'manager',
     'listener'
 ]

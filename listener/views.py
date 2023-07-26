@@ -15,8 +15,8 @@ def home(request):
     return render(request, 'home.html', context)
 
 
-from django_celery_beat.models import ClockedSchedule,PeriodicTask,CrontabSchedule
-from django.utils import timezone
+# from django_celery_beat.models import ClockedSchedule,PeriodicTask,CrontabSchedule
+# from django.utils import timezone
 
 def player(request):
     # date_obj = timezone.now()
