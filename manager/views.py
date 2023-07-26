@@ -49,6 +49,9 @@ def create_program(request, program):
     else:
         program.one_off = False
 
+
+from django_celery_beat.models import CrontabSchedule, PeriodicTask, ClockedSchedule
+
 def programs(request):
     program_list = []
     for program in Program.objects.order_by('start_date'):
@@ -67,6 +70,17 @@ def programs(request):
             program.thumb = request.FILES['image']
         
         create_program(request, program)
+
+        date_obj = program.start_date
+
+
+        # clock = 
+        ClockedSchedule.objects.create(date= program.start_date).save()
+
+        # crontab = CrontabSchedule.objects.create(minutes= date_obj.minute, hours=date_obj.hour, day_of)
+
+        # program.start_date
+
         program.save()
         return redirect('programs_page')
     
@@ -183,18 +197,6 @@ def now_playing_php(request):
 @csrf_exempt
 def now_playing_txt(request):
     return render(request, 'now_playing.txt')
-
-
-from urllib.parse import parse_qs, urlparse
-
-@csrf_exempt
-def play(request):
-    if request.method == 'POST':
-        title = request.POST.get('casttitle')
-        artwork = request.POST.get('artwork')
-        print(title)
-        print(artwork)
-    return render(request, 'play.html')
 
 
 

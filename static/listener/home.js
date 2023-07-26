@@ -16,17 +16,6 @@ topAnimeEl.forEach((el, i) => {
   })
 })
 
-document.querySelectorAll('.bar_box small').forEach((el, i) => {
-  anime({
-    loop: true,
-    targets: el,
-    scale: [0, 1],
-    opacity: [0.5, 1],
-    duration: 2000,
-    delay: 50 * i,
-    width: [20, 30, 20, 25, 30],
-  })
-})
 
 anime({
   loop: true,
@@ -64,27 +53,5 @@ radio_tags.forEach((radio, i) => {
 const info_holder = document.querySelector('.head_box .right')
 const page = document.querySelector('.page')
 
-const audio_file = document.querySelector('audio')
-const audio_progress = document.querySelector('.player_bar .progress')
-const play_btn = document.querySelector('.play_btn')
-
-const togglePlay = () => {
-  if (play_btn.id === 'play') {
-    audio_file.play()
-    audio_file.muted = false
-    play_btn.id = 'pause'
-    play_btn.innerHTML = 'stop'
-    document.querySelectorAll('.bar_box small').forEach(bar => {
-      bar.style.background = '#ea5e21'
-    })
-  } else {
-    audio_file.pause()
-    play_btn.id = 'play'
-    play_btn.innerHTML = 'play_arrow'
-    document.querySelectorAll('.bar_box small').forEach(bar => {
-      bar.style.background = '#2f2f2f'
-    })
-  }
-}
 
 

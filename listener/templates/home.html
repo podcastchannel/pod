@@ -37,24 +37,49 @@
         <section class="logo_box" style="background-image: url({{now_program.thumb.url}});">
         </section>
       </div>
-      <!-- <script src="https://embed.radio.co/player/bb94216.js"></script> -->
 
       <section class="player_box" style="z-index: 50;">
-        <audio
-          src="https://res.cloudinary.com/dvnemzw0z/video/upload/v1689936697/Burna_Boy_-_Real_Life_feat._Stormzy_Official_Audio_prcull.mp3"
-          style="display: none;"></audio>
         <div class="top">
-          <script src="https://embed.radio.co/player/6bf2bf9.js" style="width: 50px !important;"></script>
-          <!-- <button class="material-symbols-outlined play_btn" id="play" onclick="togglePlay()">play_arrow</button> -->
+          <button class="material-symbols-outlined play_btn" onclick="togglePlay()">play_arrow</button>
+          <audio controls style="display: none;">
+            <source src="https://dc5.serverse.com/proxy/wzygtluj/stream" type="audio/mpeg">
+          </audio>
 
-          <style>
-            iframe {
-              width: 60px !important;
-              /* height: 50px !important; */
-              /* background: salmon; */
-              border: 2px solid salmon;
+
+          <script>
+            const play_btn = document.querySelector('.play_btn')
+            const song = document.querySelector('audio')
+            const togglePlay = () => {
+              document.querySelector('button').onclick = () => {
+                if (song.paused) {
+                  play_btn.innerHTML = 'stop'
+                  song.play()
+                  document.querySelectorAll('.bar_box small').forEach(bar => {
+                    bar.style.background = '#ea5e21'
+                  })
+
+                  
+                  document.querySelectorAll('.bar_box small').forEach((el, i) => {
+                    anime({
+                      loop: true,
+                      targets: el,
+                      scale: [0, 1],
+                      opacity: [0.5, 1],
+                      duration: 2000,
+                      delay: 50 * i,
+                      width: [20, 30, 20, 25, 30],
+                    })
+                  })
+                } else {
+                  play_btn.innerHTML = 'play_arrow'
+                  song.pause()
+                  document.querySelectorAll('.bar_box small').forEach(bar => {
+                    bar.style.background = '#2f2f2f'
+                  })
+                }
+              }
             }
-          </style>
+          </script>
 
           <span class="bar_box">
             <small></small>
@@ -74,15 +99,18 @@
           </p>
           <p>
             <i class="material-symbols-outlined">music_note</i> <span>NOW PLAYING:-
+              <span class="cc_streaminfo radioco_song" data-type="song" data-username="wzygtluj">Loading ...</span>
 
-              <script style="width: 100px !important;" src="https://embed.radio.co/embed/s7b1693cc2/song.js"></script>
+              <script language="javascript" type="text/javascript"
+                src="https://dc5.serverse.com/system/streaminfo.js"></script>
+
             </span>
 
             <style>
               .radioco_song {
                 width: 200px !important;
                 overflow: hidden;
-                font-weight: 400;
+                font-weight: 400 !important;
                 text-overflow: ellipsis;
                 display: -webkit-box;
                 font-size: 0.8rem;
