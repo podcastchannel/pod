@@ -80,7 +80,7 @@
 .player_box {
   padding: 25px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  border-radius: 0 10px 10px 0;
+  border-radius: 10px;
   background: white;
   display: flex;
   flex-direction: column;
@@ -126,6 +126,7 @@
 
 .player_box .low p span {
   font-weight: 600;
+  font-size: 0.9rem;
   color: rgb(70, 70, 70);
 }
 
@@ -208,6 +209,15 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+}
+
+.program .text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
 }
 
 .news_box {
@@ -287,6 +297,9 @@ footer div a {
 }
 
 @media all and (max-width:1450px) {
+  .event_box .program_box{
+    justify-content: space-around;
+  }
   .event_box .program:nth-child(3) {
     display: none;
   }
