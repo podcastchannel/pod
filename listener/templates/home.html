@@ -35,7 +35,6 @@
         <section class="logo_box" style="background-image: url({{now_program.thumb.url}});">
         </section>
       </div>
-
       <section class="player_box" style="z-index: 50;">
         <div class="top">
           <button class="material-symbols-outlined play_btn" onclick="togglePlay()">play_arrow</button>
@@ -43,38 +42,35 @@
             <source src="https://dc5.serverse.com/proxy/wzygtluj/stream" type="audio/mpeg">
           </audio>
 
-
           <script>
             const play_btn = document.querySelector('.play_btn')
             const song = document.querySelector('audio')
             const togglePlay = () => {
-              document.querySelector('button').onclick = () => {
-                if (song.paused) {
-                  play_btn.innerHTML = 'stop'
-                  song.play()
-                  document.querySelectorAll('.bar_box small').forEach(bar => {
-                    bar.style.background = '#ea5e21'
-                  })
+              if (song.paused) {
+                play_btn.innerHTML = 'stop'
+                song.play()
+                document.querySelectorAll('.bar_box small').forEach(bar => {
+                  bar.style.background = '#ea5e21'
+                })
 
-                  
-                  document.querySelectorAll('.bar_box small').forEach((el, i) => {
-                    anime({
-                      loop: true,
-                      targets: el,
-                      scale: [0, 1],
-                      opacity: [0.5, 1],
-                      duration: 2000,
-                      delay: 50 * i,
-                      width: [20, 30, 20, 25, 30],
-                    })
+
+                document.querySelectorAll('.bar_box small').forEach((el, i) => {
+                  anime({
+                    loop: true,
+                    targets: el,
+                    scale: [0, 1],
+                    opacity: [0.5, 1],
+                    duration: 2000,
+                    delay: 50 * i,
+                    width: [20, 30, 20, 25, 30],
                   })
-                } else {
-                  play_btn.innerHTML = 'play_arrow'
-                  song.pause()
-                  document.querySelectorAll('.bar_box small').forEach(bar => {
-                    bar.style.background = '#2f2f2f'
-                  })
-                }
+                })
+              } else {
+                play_btn.innerHTML = 'play_arrow'
+                song.pause()
+                document.querySelectorAll('.bar_box small').forEach(bar => {
+                  bar.style.background = '#2f2f2f'
+                })
               }
             }
           </script>

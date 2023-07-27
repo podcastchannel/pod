@@ -9,28 +9,27 @@
 
 <body>
   <section>
-    <h1>The audio autoplay attribute</h1>
-    <p>Click on the play button to play a sound</p>
-    <audio controls autoplay>
-      <source src="https://dc5.serverse.com/proxy/wzygtluj/stream" type="audio/mpeg">
-    </audio>
-    <br> <br>
-
-    <!-- <span class="cc_streaminfo" data-type="song" data-username="wzygtluj">Loading ...</span> -->
-
-    <!-- <script language="javascript" type="text/javascript" src="https://dc5.serverse.com/system/streaminfo.js"></script> -->
-    <!-- <script>
-      const song = document.querySelector('audio')
-
-      document.querySelector('button').onclick =()=>{
-        if(song.paused){
-          song.play()
-        }else{
-          song.pause()
-        }
-      }
-    </script> -->
+    Current song: <a href="https://dc5.serverse.com/tunein/wzygtluj.pls" class="cc_streaminfo" data-type="song"
+      data-username="wzygtluj">Loading ...</a><br />
+    Stream title: <span class="cc_streaminfo" data-type="title" data-username="wzygtluj"></span><br />
+    Bit rate: <span class="cc_streaminfo" data-type="bitrate" data-username="wzygtluj"></span><br />
+    Current listeners: <span class="cc_streaminfo" data-type="listeners" data-username="wzygtluj"></span><br />
+    Maximum listeners: <span class="cc_streaminfo" data-type="maxlisteners" data-username="wzygtluj"></span><br />
+    Server status: <span class="cc_streaminfo" data-type="server" data-username="wzygtluj"></span><br />
+    AutoDJ status: <span class="cc_streaminfo" data-type="autodj" data-username="wzygtluj"></span><br />
+    Source connected: <span class="cc_streaminfo" data-type="source" data-username="wzygtluj"></span><br />
+    Station time: <span class="cc_streaminfo" data-type="date" data-username="wzygtluj"></span> <span
+      class="cc_streaminfo" data-type="time" data-username="wzygtluj"></span><br />
+    Current playlist: <span class="cc_streaminfo" data-type="trackplaylist" data-username="wzygtluj"></span><br />
+    Track details: <span class="cc_streaminfo" data-type="trackartist" data-username="wzygtluj"></span> - <span
+      class="cc_streaminfo" data-type="tracktitle" data-username="wzygtluj"></span> - <span class="cc_streaminfo"
+      data-type="trackalbum" data-username="wzygtluj"></span><br />
+    Raw metadata: <span class="cc_streaminfo" data-type="rawmeta" data-username="wzygtluj"></span><br />
+    Album image:<br /><img class="cc_streaminfo" data-type="trackimageurl" data-username="wzygtluj" /><br /><a href="#"
+      class="cc_streaminfo" data-type="trackbuyurl" data-username="wzygtluj">Buy this album</a><br />
   </section>
+
+  <script language="javascript" type="text/javascript" src="https://dc5.serverse.com/system/streaminfo.js"></script>
 </body>
 
 </html>
