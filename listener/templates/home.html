@@ -10,8 +10,6 @@
 {% endblock css %}
 
 
-
-
 {% block page %}
 <nav class="top_nav">
   <a href="">Home</a>
@@ -40,13 +38,13 @@
 
       <section class="player_box" style="z-index: 50;">
         <div class="top">
-          <!-- <button class="material-symbols-outlined play_btn" onclick="togglePlay()">play_arrow</button> -->
-          <!-- <audio controls style="display: none;"> -->
-            <!-- <source src="https://dc5.serverse.com/proxy/wzygtluj/stream" type="audio/mpeg"> -->
-          <!-- </audio> -->
+          <button class="material-symbols-outlined play_btn" onclick="togglePlay()">play_arrow</button>
+          <audio controls style="display: none;">
+            <source src="https://dc5.serverse.com/proxy/wzygtluj/stream" type="audio/mpeg">
+          </audio>
 
 
-          <!-- <script>
+          <script>
             const play_btn = document.querySelector('.play_btn')
             const song = document.querySelector('audio')
             const togglePlay = () => {
@@ -79,7 +77,7 @@
                 }
               }
             }
-          </script> -->
+          </script>
 
           <span class="bar_box">
             <small></small>
@@ -99,11 +97,9 @@
           </p>
           <p>
             <i class="material-symbols-outlined">music_note</i> <span>NOW PLAYING:-
-              <!-- <span class="cc_streaminfo radioco_song" data-type="song" data-username="wzygtluj">Loading ...</span>
-
+              <span class="cc_streaminfo radioco_song" data-type="song" data-username="wzygtluj">Loading ...</span>
               <script language="javascript" type="text/javascript"
-                src="https://dc5.serverse.com/system/streaminfo.js"></script> -->
-
+                src="https://dc5.serverse.com/system/streaminfo.js"></script>
             </span>
 
             <style>
@@ -142,7 +138,7 @@
             <small>{{next_program.start_date|date:'G:i'}} -
               {{next_program.end_date|date:'G:i'}}</small>
           </p>
-          <!-- <p><i class="material-symbols-outlined">music_note</i> <span>NOW PLAYING:-</span></p> -->
+          <p><i class="material-symbols-outlined">music_note</i> <span>NOW PLAYING:-</span></p>
         </div>
       </section>
     </section>
