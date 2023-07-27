@@ -128,7 +128,8 @@ import cloudinary
 cloudinary.config(
     cloud_name = 'dvnemzw0z',
     api_key = '482295267852992',
-    api_secret = '9X_kzT8VXq9a4_UY6qTr6jQ1X1o'
+    api_secret = '9X_kzT8VXq9a4_UY6qTr6jQ1X1o',
+    secure = True
 )
 
 # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
