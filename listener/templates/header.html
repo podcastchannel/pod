@@ -1,0 +1,81 @@
+<nav class="top_nav">
+  <a href="{% url 'homepage' %}">Home</a>
+  <section>
+    <div>
+      <a href="">Galleries</a>
+      <a href="">FAQ</a>
+      <a href="">About Us</a>
+      <a href="">Contact Us</a>
+    </div>
+    <div>
+      <i class="material-symbols-outlined">search</i>
+      <input type="text" placeholder="Search">
+    </div>
+  </section>
+</nav>
+
+<style>
+  .top_nav {
+    width: 70%;
+  }
+
+  .top_nav {
+    padding: 2vh 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .top_nav,
+  .top_nav a {
+    color: white;
+  }
+
+  .top_nav section {
+    display: flex;
+    gap: 0 3rem;
+  }
+
+  .top_nav section div {
+    display: flex;
+    gap: 0 1rem;
+  }
+
+  .top_nav input {
+    background: transparent;
+    padding: 5px;
+    border-bottom: 1px solid white;
+  }
+
+  .top_nav input::placeholder {
+    color: white;
+  }
+
+
+  @media all and (max-width:1600px) {
+    .top_nav {
+      width: 85%;
+      padding: 2.5vh 7.5%;
+    }
+  }
+
+  @media all and (max-width:1350px) {
+    .top_nav {
+      width: 90%;
+      padding: 2.5vh 5%;
+    }
+  }
+
+  @media all and (max-width:800px) {
+    .top_nav div {
+      flex-wrap: wrap;
+    }
+    .top_nav,
+    .top_nav section {
+      flex-direction: column;
+
+      align-items: center;
+      gap: 1rem 0;
+    }
+  }
+</style>

@@ -40,3 +40,6 @@ def player(request):
     # ClockedSchedule.objects.create(clocked_time=).save()
 
     return render(request, 'player.html')
+
+def terms(reqeuest):
+    return render(reqeuest, 'terms.html')

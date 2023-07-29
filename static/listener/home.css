@@ -1,39 +1,7 @@
-.top_nav,
 .head_box,
 .social_box,
 .low_box {
   width: 70%;
-}
-
-.top_nav {
-  padding: 2vh 15%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.top_nav,
-.top_nav a {
-  color: white;
-}
-
-.top_nav section {
-  display: flex;
-  gap: 0 3rem;
-}
-
-.top_nav section div {
-  display: flex;
-  gap: 0 1rem;
-}
-
-.top_nav input{
-  background: transparent;
-  padding: 5px;
-  border-bottom: 1px solid white;
-}
-.top_nav input::placeholder{
-  color: white;
 }
 
 .head_box {
@@ -167,7 +135,8 @@
   color: white;
 }
 
-.item_box i {
+.item_box a {
+  color: white;
   font-size: 3rem;
 }
 
@@ -244,38 +213,7 @@
   gap: 2rem 0;
 }
 
-footer {
-  background: black;
-  color: white;
-  display: flex;
-  width: 90%;
-  padding: 3vh 5%;
-  flex-wrap: wrap;
-  gap: 0 5rem;
-}
-
-footer h4 {
-  letter-spacing: 1px;
-}
-
-footer section {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-footer div {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-footer div a {
-  color: white;
-}
 @media all and (max-width:1600px) {
-
-  .top_nav,
   .social_box,
   .head_box,
   .low_box,
@@ -306,8 +244,6 @@ footer div a {
 }
 
 @media all and (max-width:1350px) {
-
-  .top_nav,
   .social_box,
   .head_box,
   .low_box,
@@ -364,11 +300,6 @@ footer div a {
   .event_box .program:nth-child(3) {
     display: flex;
   }
-
-  footer {
-    justify-content: space-around;
-    gap: revert;
-  }
 }
 
 @media all and (max-width:950px) {
@@ -388,17 +319,6 @@ footer div a {
 }
 
 @media all and (max-width:800px) {
-  .top_nav div {
-    flex-wrap: wrap;
-  }
-
-  .top_nav,
-  .top_nav section {
-    flex-direction: column;
-
-    align-items: center;
-    gap: 1rem 0;
-  }
 
   .head_box {
     flex-direction: column;

@@ -1,0 +1,71 @@
+<footer>
+  <section>
+    <h4>DISCOVER</h4>
+    <div>
+      <a href="">News</a>
+      <a href="">Sport</a>
+      <a href="">Education</a>
+      <a href="">TV Liscences</a>
+    </div>
+  </section>
+  <section>
+    <h4>TV</h4>
+    <div>
+      <a href="">S1</a>
+      <a href="">S2</a>
+      <a href="">S3</a>
+    </div>
+  </section>
+  <section>
+    <h4>RADIO</h4>
+    <div>
+      <a href="">Channel Africa</a>
+      <a href="">5 FM</a>
+      <a href="">Lotus FM</a>
+    </div>
+  </section>
+  <section>
+    <a href="{% url 'terms_page' %}" style="color: rgb(255, 238, 208);">
+      <h4>Terms And Conditions/ Privacy Policy</h4>
+    </a>
+  </section>
+</footer>
+
+<style>
+  footer {
+    background: black;
+    color: white;
+    display: flex;
+    width: 90%;
+    padding: 3vh 5%;
+    flex-wrap: wrap;
+    gap: 0 5rem;
+  }
+
+  footer h4 {
+    letter-spacing: 1px;
+  }
+
+  footer section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  footer div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  footer div a {
+    color: white;
+  }
+
+  @media all and (max-width:1150px) {
+    footer {
+      justify-content: space-around;
+      gap: 1rem 0;
+    }
+  }
+</style>
