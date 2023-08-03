@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}  
+<link rel="stylesheet" href="{% static 'component.css' %}">
+<link rel="stylesheet" href="{% static 'listener/view_program.css' %}">
+<title>Document</title>
+{% endblock css %}
+
+{% block page %}
+{% include "header.html" %}
+
+<section class="display_box">
+  <nav>
+    <div>
+      <a href="{% url 'homepage' %}" class="material-symbols-outlined back">chevron_left</a>
+      <h3>{{news}}</h3>
+      <i class="material-symbols-outlined">news</i>
+    </div>
+  </nav>
+  <section class="display">
+    <div class="img_box" style="background-image: url({{news.thumb.url}});"></div>
+    <div class="con">
+      <p>{{news.description}}</p>
+    </div>
+  </section>
+</section>
+
+<section class="related_box">
+  <h3>Related News</h3>
+  <section class="relateds">
+    <div class="related" style="background-image: url(images/dot.jpg);">
+      <p>
+        <span>New Age</span>
+      </p>
+    </div>
+    <div class="related" style="background-image: url(images/dot.jpg);">
+      <p>
+        <span>New Age</span>
+      </p>
+    </div>
+    <div class="related" style="background-image: url(images/dot.jpg);">
+      <p>
+        <span>New Age</span>
+      </p>
+    </div>
+  </section>
+</section>
+{% endblock page %}
+  

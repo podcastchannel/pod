@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{% static 'listener/home.css' %}">
 <link rel="stylesheet" href="{% static 'component.css' %}">
 <link rel="stylesheet" href="{% static 'stackgrid.css' %}">
-<title>Document</title>
+<title>OBBN Radio</title>
 {% endblock css %}
 
 
@@ -25,7 +25,7 @@
         <div class="top">
           <button class="material-symbols-outlined play_btn" onclick="togglePlay()">play_arrow</button>
           <audio controls style="display: none;">
-            <source src="https://dc5.serverse.com/proxy/wzygtluj/stream" type="audio/mpeg">
+            <source src="https://dc4.serverse.com/proxy/vlauavyv/stream" type="audio/mpeg">
           </audio>
 
           <script>
@@ -79,9 +79,9 @@
           </p>
           <p>
             <i class="material-symbols-outlined">music_note</i> <span>NOW PLAYING:-
-              <span class="cc_streaminfo radioco_song" data-type="song" data-username="wzygtluj">Loading ...</span>
+              <span class="cc_streaminfo" data-type="song" data-username="vlauavyv">Loading ...</span>
               <script language="javascript" type="text/javascript"
-                src="https://dc5.serverse.com/system/streaminfo.js"></script>
+                src="https://dc4.serverse.com/system/streaminfo.js"></script>
             </span>
 
             <style>
@@ -209,7 +209,7 @@
       <h3>Local Ghana News</h3>
       <section class="program_box">
         {% for item in local_news %}
-        <div class="program">
+        <a class="program" href="{% url 'view_local_news_page' item.slug %}">
           <div class="img_box" style="background-image: url({{item.thumb.url}});"></div>
           <p>
             <strong>{{item.name}}</strong>
@@ -218,7 +218,7 @@
             </span>
             <small>{{item.start_date|date:'jS F,Y'}}</small>
           </p>
-        </div>
+        </a>
         {% endfor %}
       </section>
     </section>

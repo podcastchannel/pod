@@ -22,10 +22,10 @@
 {% include "sideBar.html" %}
 
 <section class="main">
-  <section class="main_cover" onclick="toggleProgramForm()"></section>
+  <section class="main_cover" onclick="window.location.reload()"></section>
   <section class="add_program_box">
     <button type="button" class="material-symbols-outlined" style="cursor: pointer;"
-      onclick="toggleProgramForm()">close</button>
+      onclick="window.location.reload()">close</button>
     <form method="post" id="program_form" enctype="multipart/form-data">
       {% csrf_token %}
       <section>
@@ -53,8 +53,8 @@
         <label for="add_image" class="image_label">
           <div class="img_box">
             <i class="material-symbols-outlined" style="font-size: 4rem;">add_a_photo</i>
-            <input style="display: none;" type="file" name="image" id="add_image" accept="image/*"
-              onchange="addImage(event.target, event.target.parentElement)">
+            <input style="height: 1px; width: 1px;" type="file" name="image" id="add_image" accept="image/*"
+              onchange="addImage(event.target, event.target.parentElement)" required>
           </div>
         </label>
       </section>
@@ -213,12 +213,14 @@
 
   const toggleProgramForm = (el, el_id) => {
     if (el) {
+      document.querySelector('input[name="image"]').required = true
       document.getElementById('program_type').innerHTML = 'New Program'
       document.getElementById('new_program_day').innerHTML = daysOfWeek[(el.id).split('')[1]]
       document.querySelector('input[name="py_day"]').value = py_days[(el.id).split('')[1]]
     }
 
     if (el_id) {
+      document.querySelector('input[name="image"]').required = false
       program_list.forEach(prog => {
         if (prog.id === el_id) {
           document.querySelector('input[name="id"]').value = prog.id

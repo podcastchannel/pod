@@ -14,32 +14,14 @@ def home(request):
     }
     return render(request, 'home.html', context)
 
-
-# from django_celery_beat.models import ClockedSchedule,PeriodicTask,CrontabSchedule
-# from django.utils import timezone
-
 def player(request):
-    # date_obj = timezone.now()
-    # crontab_schedule = CrontabSchedule.objects.create(minute=date_obj.minute + 1, 
-    #                                                   hour=date_obj.hour, 
-    #                                                   day_of_month=date_obj.day,
-    #                                                   month_of_year=date_obj.month
-    #                                                   )
-
-    # task,created = PeriodicTask.objects.update_or_create(
-    #                             name = 'notify_p1s',
-    #                             defaults={
-    #                                 'crontab' : crontab_schedule,
-    #                                 'task' : 'manager.tasks.notify',
-    #                                 'one_off' : False
-    #                                 }
-    #                             )
-
-
-    
-    # ClockedSchedule.objects.create(clocked_time=).save()
-
     return render(request, 'player.html')
+
+def view_local_news(request, slug):
+    context = {
+        'news' : LocalNew.objects.get(slug=slug)
+    }
+    return render(request, 'view_local_news.html', context)
 
 def terms(reqeuest):
     return render(reqeuest, 'terms.html')

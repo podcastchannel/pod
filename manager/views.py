@@ -49,9 +49,6 @@ def create_program(request, program):
     else:
         program.one_off = False
 
-
-# from django_celery_beat.models import CrontabSchedule, PeriodicTask, ClockedSchedule
-
 def programs(request):
     program_list = []
     for program in Program.objects.order_by('start_date'):
@@ -63,24 +60,12 @@ def programs(request):
     if request.method == 'POST':
         if request.POST.get('id'):
             program = Program.objects.get(id=request.POST.get('id'))
-            if request.FILES:
+            if 'image' in request.FILES:
                 program.thumb = request.FILES['image']
         else:
             program = Program()
-            program.thumb = request.FILES['image']
-        
+            program.thumb = request.FILES['image']        
         create_program(request, program)
-
-        date_obj = program.start_date
-
-
-        # clock = 
-        # ClockedSchedule.objects.create(date= program.start_date).save()
-
-        # crontab = CrontabSchedule.objects.create(minutes= date_obj.minute, hours=date_obj.hour, day_of)
-
-        # program.start_date
-
         program.save()
         return redirect('programs_page')
     
